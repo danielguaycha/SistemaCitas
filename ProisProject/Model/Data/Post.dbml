@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="cmsystem" Class="PostDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DANIEL;Initial Catalog=cmsystem;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="ProisProject.Properties.Settings" SettingsPropertyName="cmsystemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Consulta" Member="Consulta">
+    <Type Name="Consulta">
+      <Column Name="id_consulta" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="diagnostico" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="medicacion" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="prescripcion" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="id_cita" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_exlab" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_execo" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="ExEcografico_Consulta" Member="ExEcografico" ThisKey="id_execo" OtherKey="id_execo" Type="ExEcografico" IsForeignKey="true" />
+      <Association Name="ExLaboratorio_Consulta" Member="ExLaboratorio" ThisKey="id_exlab" OtherKey="id_exlab" Type="ExLaboratorio" IsForeignKey="true" />
+      <Association Name="Cita_Consulta" Member="Cita" ThisKey="id_cita" OtherKey="id_cita" Type="Cita" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ControlLog" Member="ControlLog">
+    <Type Name="ControlLog">
+      <Column Name="id_control" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nivel" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="id_usuario" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="Usuario_ControlLog" Member="Usuario" ThisKey="id_usuario" OtherKey="id_usuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExEcografico" Member="ExEcografico">
+    <Type Name="ExEcografico">
+      <Column Name="id_execo" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="datos_clinicos" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="diagnostico" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="solicitud" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ExEcografico_Consulta" Member="Consulta" ThisKey="id_execo" OtherKey="id_execo" Type="Consulta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ExLaboratorio" Member="ExLaboratorio">
+    <Type Name="ExLaboratorio">
+      <Column Name="id_exlab" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="interno" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ExLaboratorio_Consulta" Member="Consulta" ThisKey="id_exlab" OtherKey="id_exlab" Type="Consulta" />
+      <Association Name="ExLaboratorio_Labparametro" Member="Labparametro" ThisKey="id_exlab" OtherKey="id_exlab" Type="Labparametro" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Labparametro" Member="Labparametro">
+    <Type Name="Labparametro">
+      <Column Name="tipo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="id_exlab" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Association Name="ExLaboratorio_Labparametro" Member="ExLaboratorio" ThisKey="id_exlab" OtherKey="id_exlab" Type="ExLaboratorio" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Medico" Member="Medico">
+    <Type Name="Medico">
+      <Column Name="id_medico" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_person" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_especialidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="titulo" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Medico_Cita" Member="Cita" ThisKey="id_medico" OtherKey="id_medico" Type="Cita" />
+      <Association Name="Especialidad_Medico" Member="Especialidad" ThisKey="id_especialidad" OtherKey="id_especialidad" Type="Especialidad" IsForeignKey="true" />
+      <Association Name="Persona_Medico" Member="Persona" ThisKey="id_person" OtherKey="id_person" Type="Persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Permisos" Member="Permisos">
+    <Type Name="Permisos">
+      <Column Name="id_permiso" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="valor" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Permisos_Rol_Permiso" Member="Rol_Permiso" ThisKey="id_permiso" OtherKey="id_permiso" Type="Rol_Permiso" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol" Member="Rol">
+    <Type Name="Rol">
+      <Column Name="id_rol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_rol" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Rol_Rol_Permiso" Member="Rol_Permiso" ThisKey="id_rol" OtherKey="id_rol" Type="Rol_Permiso" />
+      <Association Name="Rol_Usuario" Member="Usuario" ThisKey="id_rol" OtherKey="id_rol" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol_Permiso" Member="Rol_Permiso">
+    <Type Name="Rol_Permiso">
+      <Column Name="id_rol" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_permiso" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Permisos_Rol_Permiso" Member="Permisos" ThisKey="id_permiso" OtherKey="id_permiso" Type="Permisos" IsForeignKey="true" />
+      <Association Name="Rol_Rol_Permiso" Member="Rol" ThisKey="id_rol" OtherKey="id_rol" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuario">
+    <Type Name="Usuario">
+      <Column Name="id_usuario" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_person" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="id_rol" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Usuario_ControlLog" Member="ControlLog" ThisKey="id_usuario" OtherKey="id_usuario" Type="ControlLog" />
+      <Association Name="Rol_Usuario" Member="Rol" ThisKey="id_rol" OtherKey="id_rol" Type="Rol" IsForeignKey="true" />
+      <Association Name="Persona_Usuario" Member="Persona" ThisKey="id_person" OtherKey="id_person" Type="Persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cita" Member="Cita">
+    <Type Name="Cita">
+      <Column Name="id_cita" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_medico" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_person" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="precio" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="retencion" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Association Name="Cita_Consulta" Member="Consulta" ThisKey="id_cita" OtherKey="id_cita" Type="Consulta" />
+      <Association Name="Medico_Cita" Member="Medico" ThisKey="id_medico" OtherKey="id_medico" Type="Medico" IsForeignKey="true" />
+      <Association Name="Persona_Cita" Member="Persona" ThisKey="id_person" OtherKey="id_person" Type="Persona" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Especialidad" Member="Especialidad">
+    <Type Name="Especialidad">
+      <Column Name="id_especialidad" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="costo" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Especialidad_Medico" Member="Medico" ThisKey="id_especialidad" OtherKey="id_especialidad" Type="Medico" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Persona" Member="Persona">
+    <Type Name="Persona">
+      <Column Name="id_person" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dni" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="peso" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="altura" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="sangre" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="fnac" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ecivil" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="tipo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Persona_Medico" Member="Medico" ThisKey="id_person" OtherKey="id_person" Type="Medico" />
+      <Association Name="Persona_Usuario" Member="Usuario" ThisKey="id_person" OtherKey="id_person" Type="Usuario" />
+      <Association Name="Persona_Cita" Member="Cita" ThisKey="id_person" OtherKey="id_person" Type="Cita" />
+    </Type>
+  </Table>
+</Database>

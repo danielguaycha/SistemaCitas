@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProisProject.View
+namespace ProisProject.View.Panels
 {
-    public partial class PacientePanel : UserControl
+    public partial class HistorialPanel : UserControl
     {
-        public PacientePanel()
+        public HistorialPanel()
         {
             InitializeComponent();
         }

@@ -5,21 +5,29 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProisProject
 {
+   
     public partial class Index : Form
     {
         private static bool MAXIMIZED = false;
-        
+        public static Panel PANELNOTIFY;
+        public static Label TEXTNOTIFY;
+        public static Label ICONOTIFY;
         public Index()
         {
             InitializeComponent();
             doctorPanel1.Width = PanelContainer.Width;
             doctorPanel1.BringToFront();
-            menuStrip1.Renderer = new MyRenderer();
+            horizontalMenu.Renderer = new MyRenderer();
+            PANELNOTIFY = this.panelNotitify;
+
+            String body = Controller.UtilController.TEMPLATEMAILPASSWORD.Replace("{clave}", "123456789000").Replace("{destinatario}", "danielguaycha@gmail.com");
+           // Controller.UtilController.sendMail("danielguaycha@gmail.com", body, "Mail Password","");
         }
 
         public void coloqueFocus(Bunifu.Framework.UI.BunifuFlatButton b)
@@ -27,6 +35,7 @@ namespace ProisProject
             SlidePanel.Height = b.Height;
             SlidePanel.Top = b.Top;
         }
+             
 
         private void btnClose(object sender, EventArgs e)
         {
@@ -35,6 +44,7 @@ namespace ProisProject
 
         private void btnDoctores_Click(object sender, EventArgs e)
         {
+            doctorPanel1.BringToFront();
             coloqueFocus(btnDoctores);
         }
 
@@ -79,31 +89,37 @@ namespace ProisProject
         private void btnHome_Click(object sender, EventArgs e)
         {
             coloqueFocus(btnHome);
+            homePanel1.BringToFront();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             coloqueFocus(btnSearch);
+            searchPanel1.BringToFront();
         }
 
         private void btnConsultas_Click(object sender, EventArgs e)
         {
             coloqueFocus(btnConsultas);
+            panelConsulta1.BringToFront();
         }
 
         private void btnPacientes_Click(object sender, EventArgs e)
         {
             coloqueFocus(btnPacientes);
+            pacientePanel1.BringToFront();
         }
 
         private void btnHistorial_Click(object sender, EventArgs e)
         {
             coloqueFocus(btnHistorial);
+            historialPanel1.BringToFront();
         }
 
         private void btnReservaciones_Click(object sender, EventArgs e)
         {
             coloqueFocus(btnReservaciones);
+            panelCitas1.BringToFront();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -120,6 +136,21 @@ namespace ProisProject
                 menuAnimator.ShowSync(SideBarMenu);
             }
 
+        }
+
+        private void especialidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            specialityPanel1.BringToFront();
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelUsuario1.BringToFront();
+        }
+
+        private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rolPanel1.BringToFront();
         }
     }
 
@@ -148,4 +179,5 @@ namespace ProisProject
         public override Color MenuItemPressedGradientEnd { get { return Color.FromArgb(21, 22, 24); } }
        
     }
+
 }

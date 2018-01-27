@@ -29,20 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
             BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Index));
             this.HeaderTitle = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.maximizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.minimizeButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.horizontalMenu = new System.Windows.Forms.MenuStrip();
             this.cMSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedaGeneralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSessiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.SideBarMenu = new System.Windows.Forms.Panel();
             this.SlidePanel = new System.Windows.Forms.Panel();
@@ -55,21 +59,30 @@
             this.btnPacientes = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnHistorial = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnReservaciones = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.PanelContainer = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelConsulta1 = new ProisProject.View.Panels.PanelConsulta();
+            this.panelCitas1 = new ProisProject.View.Panels.PanelCitas();
+            this.historialPanel1 = new ProisProject.View.Panels.HistorialPanel();
+            this.rolPanel1 = new ProisProject.View.Panels.RolPanel();
+            this.panelUsuario1 = new ProisProject.View.Panels.UserPanel();
+            this.pacientePanel1 = new ProisProject.View.PacientePanel();
+            this.homePanel1 = new ProisProject.View.Panels.HomePanel();
+            this.searchPanel1 = new ProisProject.View.SearchPanel();
+            this.specialityPanel1 = new ProisProject.View.SpecialityPanel();
+            this.doctorPanel1 = new ProisProject.View.DoctorPanel();
+            this.panelNotitify = new System.Windows.Forms.Panel();
             this.nowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notificationAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.menuAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.doctorPanel1 = new ProisProject.View.DoctorPanel();
+            this.dragWindows = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.HeaderTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximizeButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
             this.panel3.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.horizontalMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             this.SideBarMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
@@ -79,17 +92,28 @@
             // HeaderTitle
             // 
             this.HeaderTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.HeaderTitle.Controls.Add(this.pictureBox1);
             this.HeaderTitle.Controls.Add(this.maximizeButton);
             this.HeaderTitle.Controls.Add(this.minimizeButton);
             this.HeaderTitle.Controls.Add(this.panel3);
             this.HeaderTitle.Controls.Add(this.bunifuImageButton2);
             this.menuAnimator.SetDecoration(this.HeaderTitle, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.HeaderTitle, BunifuAnimatorNS.DecorationType.None);
             this.HeaderTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.HeaderTitle.ForeColor = System.Drawing.Color.Snow;
             this.HeaderTitle.Location = new System.Drawing.Point(0, 0);
             this.HeaderTitle.Name = "HeaderTitle";
-            this.HeaderTitle.Size = new System.Drawing.Size(1200, 35);
+            this.HeaderTitle.Size = new System.Drawing.Size(1024, 35);
             this.HeaderTitle.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.menuAnimator.SetDecoration(this.pictureBox1, BunifuAnimatorNS.DecorationType.None);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // maximizeButton
             // 
@@ -97,10 +121,9 @@
             this.maximizeButton.BackColor = System.Drawing.Color.Transparent;
             this.maximizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.maximizeButton, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.maximizeButton, BunifuAnimatorNS.DecorationType.None);
             this.maximizeButton.Image = ((System.Drawing.Image)(resources.GetObject("maximizeButton.Image")));
             this.maximizeButton.ImageActive = null;
-            this.maximizeButton.Location = new System.Drawing.Point(1146, 6);
+            this.maximizeButton.Location = new System.Drawing.Point(970, 6);
             this.maximizeButton.Name = "maximizeButton";
             this.maximizeButton.Size = new System.Drawing.Size(17, 23);
             this.maximizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -115,10 +138,9 @@
             this.minimizeButton.BackColor = System.Drawing.Color.Transparent;
             this.minimizeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.minimizeButton, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.minimizeButton, BunifuAnimatorNS.DecorationType.None);
             this.minimizeButton.Image = ((System.Drawing.Image)(resources.GetObject("minimizeButton.Image")));
             this.minimizeButton.ImageActive = null;
-            this.minimizeButton.Location = new System.Drawing.Point(1114, 6);
+            this.minimizeButton.Location = new System.Drawing.Point(938, 6);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(26, 23);
             this.minimizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -129,30 +151,28 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.menuStrip1);
+            this.panel3.Controls.Add(this.horizontalMenu);
             this.menuAnimator.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.panel3, BunifuAnimatorNS.DecorationType.None);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Location = new System.Drawing.Point(27, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(378, 35);
             this.panel3.TabIndex = 1;
             // 
-            // menuStrip1
+            // horizontalMenu
             // 
-            this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.menuAnimator.SetDecoration(this.menuStrip1, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.menuStrip1, BunifuAnimatorNS.DecorationType.None);
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(15, 2, 0, 2);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.horizontalMenu.AutoSize = false;
+            this.horizontalMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.menuAnimator.SetDecoration(this.horizontalMenu, BunifuAnimatorNS.DecorationType.None);
+            this.horizontalMenu.GripMargin = new System.Windows.Forms.Padding(15, 2, 0, 2);
+            this.horizontalMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cMSystemToolStripMenuItem,
-            this.archivoToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Margin = new System.Windows.Forms.Padding(10, 0, 0, 10);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(378, 35);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.registrosToolStripMenuItem});
+            this.horizontalMenu.Location = new System.Drawing.Point(0, 0);
+            this.horizontalMenu.Margin = new System.Windows.Forms.Padding(10, 0, 0, 10);
+            this.horizontalMenu.Name = "horizontalMenu";
+            this.horizontalMenu.Size = new System.Drawing.Size(378, 30);
+            this.horizontalMenu.TabIndex = 0;
+            this.horizontalMenu.Text = "menuStrip1";
             // 
             // cMSystemToolStripMenuItem
             // 
@@ -169,7 +189,7 @@
             this.cMSystemToolStripMenuItem.Font = new System.Drawing.Font("Showcard Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cMSystemToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.cMSystemToolStripMenuItem.Name = "cMSystemToolStripMenuItem";
-            this.cMSystemToolStripMenuItem.Size = new System.Drawing.Size(106, 31);
+            this.cMSystemToolStripMenuItem.Size = new System.Drawing.Size(106, 26);
             this.cMSystemToolStripMenuItem.Text = "CMSystem";
             // 
             // busquedaGeneralToolStripMenuItem
@@ -201,13 +221,44 @@
             this.acercaDeToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
             this.acercaDeToolStripMenuItem1.Text = "Acerca de";
             // 
-            // archivoToolStripMenuItem
+            // registrosToolStripMenuItem
             // 
-            this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.archivoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(62, 31);
-            this.archivoToolStripMenuItem.Text = "Archivo";
+            this.registrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.especialidadesToolStripMenuItem,
+            this.usuariosToolStripMenuItem,
+            this.rolesToolStripMenuItem,
+            this.logsToolStripMenuItem});
+            this.registrosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.registrosToolStripMenuItem.Name = "registrosToolStripMenuItem";
+            this.registrosToolStripMenuItem.Size = new System.Drawing.Size(67, 26);
+            this.registrosToolStripMenuItem.Text = "Registros";
+            // 
+            // especialidadesToolStripMenuItem
+            // 
+            this.especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
+            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.especialidadesToolStripMenuItem.Text = "Especialidades";
+            this.especialidadesToolStripMenuItem.Click += new System.EventHandler(this.especialidadesToolStripMenuItem_Click);
+            // 
+            // usuariosToolStripMenuItem
+            // 
+            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            // 
+            // rolesToolStripMenuItem
+            // 
+            this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
+            this.rolesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.rolesToolStripMenuItem.Text = "Roles";
+            this.rolesToolStripMenuItem.Click += new System.EventHandler(this.rolesToolStripMenuItem_Click);
+            // 
+            // logsToolStripMenuItem
+            // 
+            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
+            this.logsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.logsToolStripMenuItem.Text = "Logs";
             // 
             // bunifuImageButton2
             // 
@@ -215,10 +266,9 @@
             this.bunifuImageButton2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuImageButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.bunifuImageButton2, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.bunifuImageButton2, BunifuAnimatorNS.DecorationType.None);
             this.bunifuImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton2.Image")));
             this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(1169, 6);
+            this.bunifuImageButton2.Location = new System.Drawing.Point(993, 6);
             this.bunifuImageButton2.Name = "bunifuImageButton2";
             this.bunifuImageButton2.Size = new System.Drawing.Size(17, 23);
             this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -241,7 +291,6 @@
             this.SideBarMenu.Controls.Add(this.btnHistorial);
             this.SideBarMenu.Controls.Add(this.btnReservaciones);
             this.menuAnimator.SetDecoration(this.SideBarMenu, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.SideBarMenu, BunifuAnimatorNS.DecorationType.None);
             this.SideBarMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.SideBarMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(46)))), ((int)(((byte)(70)))));
             this.SideBarMenu.Location = new System.Drawing.Point(0, 35);
@@ -253,7 +302,6 @@
             // 
             this.SlidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(114)))), ((int)(((byte)(137)))), ((int)(((byte)(218)))));
             this.menuAnimator.SetDecoration(this.SlidePanel, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.SlidePanel, BunifuAnimatorNS.DecorationType.None);
             this.SlidePanel.Location = new System.Drawing.Point(0, 37);
             this.SlidePanel.Name = "SlidePanel";
             this.SlidePanel.Size = new System.Drawing.Size(7, 48);
@@ -268,7 +316,6 @@
             this.btnHome.ButtonText = "     Inicio";
             this.btnHome.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnHome, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnHome, BunifuAnimatorNS.DecorationType.None);
             this.btnHome.DisabledColor = System.Drawing.Color.Gray;
             this.btnHome.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHome.Iconcolor = System.Drawing.Color.Transparent;
@@ -306,7 +353,6 @@
             this.btnDoctores.ButtonText = "     Médicos";
             this.btnDoctores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnDoctores, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnDoctores, BunifuAnimatorNS.DecorationType.None);
             this.btnDoctores.DisabledColor = System.Drawing.Color.Gray;
             this.btnDoctores.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoctores.Iconcolor = System.Drawing.Color.Transparent;
@@ -341,7 +387,6 @@
             this.btnMenu.BackColor = System.Drawing.Color.Transparent;
             this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnMenu, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnMenu, BunifuAnimatorNS.DecorationType.None);
             this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
             this.btnMenu.ImageActive = null;
             this.btnMenu.Location = new System.Drawing.Point(173, 6);
@@ -362,7 +407,6 @@
             this.btnSearch.ButtonText = "     Busqueda";
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnSearch, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnSearch, BunifuAnimatorNS.DecorationType.None);
             this.btnSearch.DisabledColor = System.Drawing.Color.Gray;
             this.btnSearch.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Iconcolor = System.Drawing.Color.Transparent;
@@ -400,7 +444,6 @@
             this.btnConsultas.ButtonText = "     Consultas";
             this.btnConsultas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnConsultas, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnConsultas, BunifuAnimatorNS.DecorationType.None);
             this.btnConsultas.DisabledColor = System.Drawing.Color.Gray;
             this.btnConsultas.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultas.Iconcolor = System.Drawing.Color.Transparent;
@@ -431,7 +474,6 @@
             // 
             // div
             // 
-            this.notificationAnimator.SetDecoration(this.div, BunifuAnimatorNS.DecorationType.None);
             this.menuAnimator.SetDecoration(this.div, BunifuAnimatorNS.DecorationType.None);
             this.div.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.div.Location = new System.Drawing.Point(1, 186);
@@ -449,7 +491,6 @@
             this.btnPacientes.ButtonText = "     Pacientes";
             this.btnPacientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnPacientes, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnPacientes, BunifuAnimatorNS.DecorationType.None);
             this.btnPacientes.DisabledColor = System.Drawing.Color.Gray;
             this.btnPacientes.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPacientes.Iconcolor = System.Drawing.Color.Transparent;
@@ -484,10 +525,9 @@
             this.btnHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.btnHistorial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHistorial.BorderRadius = 0;
-            this.btnHistorial.ButtonText = "     Historial Clinico";
+            this.btnHistorial.ButtonText = "     Historial";
             this.btnHistorial.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnHistorial, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnHistorial, BunifuAnimatorNS.DecorationType.None);
             this.btnHistorial.DisabledColor = System.Drawing.Color.Gray;
             this.btnHistorial.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistorial.Iconcolor = System.Drawing.Color.Transparent;
@@ -510,7 +550,7 @@
             this.btnHistorial.selected = false;
             this.btnHistorial.Size = new System.Drawing.Size(213, 48);
             this.btnHistorial.TabIndex = 8;
-            this.btnHistorial.Text = "     Historial Clinico";
+            this.btnHistorial.Text = "     Historial";
             this.btnHistorial.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHistorial.Textcolor = System.Drawing.Color.White;
             this.btnHistorial.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -523,10 +563,9 @@
             this.btnReservaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.btnReservaciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnReservaciones.BorderRadius = 0;
-            this.btnReservaciones.ButtonText = "     Reservaciones";
+            this.btnReservaciones.ButtonText = "     Citas";
             this.btnReservaciones.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnReservaciones, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.btnReservaciones, BunifuAnimatorNS.DecorationType.None);
             this.btnReservaciones.DisabledColor = System.Drawing.Color.Gray;
             this.btnReservaciones.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReservaciones.Iconcolor = System.Drawing.Color.Transparent;
@@ -549,41 +588,137 @@
             this.btnReservaciones.selected = false;
             this.btnReservaciones.Size = new System.Drawing.Size(213, 48);
             this.btnReservaciones.TabIndex = 9;
-            this.btnReservaciones.Text = "     Reservaciones";
+            this.btnReservaciones.Text = "     Citas";
             this.btnReservaciones.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReservaciones.Textcolor = System.Drawing.Color.White;
             this.btnReservaciones.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReservaciones.Click += new System.EventHandler(this.btnReservaciones_Click);
             // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this.HeaderTitle;
-            this.bunifuDragControl1.Vertical = true;
-            // 
             // PanelContainer
             // 
-            this.PanelContainer.Controls.Add(this.panel1);
+            this.PanelContainer.Controls.Add(this.panelConsulta1);
+            this.PanelContainer.Controls.Add(this.panelCitas1);
+            this.PanelContainer.Controls.Add(this.historialPanel1);
+            this.PanelContainer.Controls.Add(this.rolPanel1);
+            this.PanelContainer.Controls.Add(this.panelUsuario1);
+            this.PanelContainer.Controls.Add(this.pacientePanel1);
+            this.PanelContainer.Controls.Add(this.homePanel1);
+            this.PanelContainer.Controls.Add(this.searchPanel1);
+            this.PanelContainer.Controls.Add(this.specialityPanel1);
             this.PanelContainer.Controls.Add(this.doctorPanel1);
+            this.PanelContainer.Controls.Add(this.panelNotitify);
             this.menuAnimator.SetDecoration(this.PanelContainer, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.PanelContainer, BunifuAnimatorNS.DecorationType.None);
             this.PanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContainer.Location = new System.Drawing.Point(218, 35);
             this.PanelContainer.Name = "PanelContainer";
-            this.PanelContainer.Size = new System.Drawing.Size(982, 685);
+            this.PanelContainer.Size = new System.Drawing.Size(806, 685);
             this.PanelContainer.TabIndex = 2;
             // 
-            // panel1
+            // panelConsulta1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.menuAnimator.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
-            this.notificationAnimator.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 652);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(982, 33);
-            this.panel1.TabIndex = 1;
+            this.menuAnimator.SetDecoration(this.panelConsulta1, BunifuAnimatorNS.DecorationType.None);
+            this.panelConsulta1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelConsulta1.Location = new System.Drawing.Point(0, 0);
+            this.panelConsulta1.Name = "panelConsulta1";
+            this.panelConsulta1.Size = new System.Drawing.Size(806, 650);
+            this.panelConsulta1.TabIndex = 10;
+            // 
+            // panelCitas1
+            // 
+            this.menuAnimator.SetDecoration(this.panelCitas1, BunifuAnimatorNS.DecorationType.None);
+            this.panelCitas1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCitas1.Location = new System.Drawing.Point(0, 0);
+            this.panelCitas1.Name = "panelCitas1";
+            this.panelCitas1.Size = new System.Drawing.Size(806, 650);
+            this.panelCitas1.TabIndex = 9;
+            // 
+            // historialPanel1
+            // 
+            this.menuAnimator.SetDecoration(this.historialPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.historialPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.historialPanel1.Location = new System.Drawing.Point(0, 0);
+            this.historialPanel1.Name = "historialPanel1";
+            this.historialPanel1.Size = new System.Drawing.Size(806, 650);
+            this.historialPanel1.TabIndex = 8;
+            // 
+            // rolPanel1
+            // 
+            this.menuAnimator.SetDecoration(this.rolPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.rolPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rolPanel1.Location = new System.Drawing.Point(0, 0);
+            this.rolPanel1.Name = "rolPanel1";
+            this.rolPanel1.Size = new System.Drawing.Size(806, 650);
+            this.rolPanel1.TabIndex = 7;
+            // 
+            // panelUsuario1
+            // 
+            this.menuAnimator.SetDecoration(this.panelUsuario1, BunifuAnimatorNS.DecorationType.None);
+            this.panelUsuario1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelUsuario1.Location = new System.Drawing.Point(0, 0);
+            this.panelUsuario1.Name = "panelUsuario1";
+            this.panelUsuario1.Size = new System.Drawing.Size(806, 650);
+            this.panelUsuario1.TabIndex = 6;
+            // 
+            // pacientePanel1
+            // 
+            this.menuAnimator.SetDecoration(this.pacientePanel1, BunifuAnimatorNS.DecorationType.None);
+            this.pacientePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pacientePanel1.Location = new System.Drawing.Point(0, 0);
+            this.pacientePanel1.Name = "pacientePanel1";
+            this.pacientePanel1.Size = new System.Drawing.Size(806, 650);
+            this.pacientePanel1.TabIndex = 5;
+            // 
+            // homePanel1
+            // 
+            this.menuAnimator.SetDecoration(this.homePanel1, BunifuAnimatorNS.DecorationType.None);
+            this.homePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.homePanel1.Location = new System.Drawing.Point(0, 0);
+            this.homePanel1.Name = "homePanel1";
+            this.homePanel1.Size = new System.Drawing.Size(806, 650);
+            this.homePanel1.TabIndex = 4;
+            // 
+            // searchPanel1
+            // 
+            this.searchPanel1.CitasPanel = null;
+            this.menuAnimator.SetDecoration(this.searchPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.searchPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchPanel1.DoctorPanel = null;
+            this.searchPanel1.Location = new System.Drawing.Point(0, 0);
+            this.searchPanel1.Name = "searchPanel1";
+            this.searchPanel1.PacientePanel = null;
+            this.searchPanel1.Size = new System.Drawing.Size(806, 650);
+            this.searchPanel1.TabIndex = 3;
+            // 
+            // specialityPanel1
+            // 
+            this.specialityPanel1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.menuAnimator.SetDecoration(this.specialityPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.specialityPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.specialityPanel1.Location = new System.Drawing.Point(0, 0);
+            this.specialityPanel1.Name = "specialityPanel1";
+            this.specialityPanel1.Size = new System.Drawing.Size(806, 650);
+            this.specialityPanel1.TabIndex = 2;
+            // 
+            // doctorPanel1
+            // 
+            this.doctorPanel1.AutoSize = true;
+            this.menuAnimator.SetDecoration(this.doctorPanel1, BunifuAnimatorNS.DecorationType.None);
+            this.doctorPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.doctorPanel1.Location = new System.Drawing.Point(0, 0);
+            this.doctorPanel1.Name = "doctorPanel1";
+            this.doctorPanel1.Size = new System.Drawing.Size(806, 650);
+            this.doctorPanel1.TabIndex = 0;
+            // 
+            // panelNotitify
+            // 
+            this.panelNotitify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.menuAnimator.SetDecoration(this.panelNotitify, BunifuAnimatorNS.DecorationType.None);
+            this.panelNotitify.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelNotitify.Location = new System.Drawing.Point(0, 650);
+            this.panelNotitify.Name = "panelNotitify";
+            this.panelNotitify.Size = new System.Drawing.Size(806, 35);
+            this.panelNotitify.TabIndex = 1;
+            this.panelNotitify.Visible = false;
             // 
             // nowToolStripMenuItem
             // 
@@ -616,27 +751,6 @@
             this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.acercaDeToolStripMenuItem.Text = "Acerca de";
             // 
-            // notificationAnimator
-            // 
-            this.notificationAnimator.AnimationType = BunifuAnimatorNS.AnimationType.VertSlide;
-            this.notificationAnimator.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(0);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.notificationAnimator.DefaultAnimation = animation2;
-            // 
             // menuAnimator
             // 
             this.menuAnimator.AnimationType = BunifuAnimatorNS.AnimationType.HorizBlind;
@@ -659,39 +773,36 @@
             this.menuAnimator.DefaultAnimation = animation1;
             this.menuAnimator.TimeStep = 0.026F;
             // 
-            // doctorPanel1
+            // dragWindows
             // 
-            this.doctorPanel1.AutoSize = true;
-            this.notificationAnimator.SetDecoration(this.doctorPanel1, BunifuAnimatorNS.DecorationType.None);
-            this.menuAnimator.SetDecoration(this.doctorPanel1, BunifuAnimatorNS.DecorationType.None);
-            this.doctorPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.doctorPanel1.Location = new System.Drawing.Point(0, 0);
-            this.doctorPanel1.Name = "doctorPanel1";
-            this.doctorPanel1.Size = new System.Drawing.Size(982, 685);
-            this.doctorPanel1.TabIndex = 0;
+            this.dragWindows.Fixed = true;
+            this.dragWindows.Horizontal = true;
+            this.dragWindows.TargetControl = this.HeaderTitle;
+            this.dragWindows.Vertical = true;
             // 
-            // Form1
+            // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 720);
+            this.ClientSize = new System.Drawing.Size(1024, 720);
             this.Controls.Add(this.PanelContainer);
             this.Controls.Add(this.SideBarMenu);
             this.Controls.Add(this.HeaderTitle);
-            this.notificationAnimator.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.menuAnimator.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(1200, 720);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1024, 720);
+            this.Name = "Index";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CmSystem";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.HeaderTitle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximizeButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.horizontalMenu.ResumeLayout(false);
+            this.horizontalMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             this.SideBarMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
@@ -708,12 +819,10 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton2;
         private Bunifu.Framework.UI.BunifuFlatButton btnDoctores;
         private Bunifu.Framework.UI.BunifuImageButton btnMenu;
-        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Panel PanelContainer;
         private View.DoctorPanel doctorPanel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip horizontalMenu;
         private System.Windows.Forms.ToolStripMenuItem cMSystemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesToolStripMenuItem;
@@ -733,9 +842,24 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnHistorial;
         private Bunifu.Framework.UI.BunifuImageButton minimizeButton;
         private Bunifu.Framework.UI.BunifuImageButton maximizeButton;
-        private System.Windows.Forms.Panel panel1;
         private BunifuAnimatorNS.BunifuTransition menuAnimator;
-        private BunifuAnimatorNS.BunifuTransition notificationAnimator;
+        private System.Windows.Forms.Panel panelNotitify;
+        private System.Windows.Forms.ToolStripMenuItem registrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem especialidadesToolStripMenuItem;
+        private View.SpecialityPanel specialityPanel1;
+        private Bunifu.Framework.UI.BunifuDragControl dragWindows;
+        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
+        private View.SearchPanel searchPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private View.Panels.HomePanel homePanel1;
+        private View.PacientePanel pacientePanel1;
+        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private View.Panels.UserPanel panelUsuario1;
+        private View.Panels.RolPanel rolPanel1;
+        private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
+        private View.Panels.HistorialPanel historialPanel1;
+        private View.Panels.PanelCitas panelCitas1;
+        private View.Panels.PanelConsulta panelConsulta1;
     }
 }
 

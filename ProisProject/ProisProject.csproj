@@ -36,9 +36,13 @@
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\..\Desktop\InnerVisual-Bunifu_UI_v1.5.3 Crack\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,29 +55,132 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CitasController.cs" />
+    <Compile Include="Controller\ConsultaController.cs" />
+    <Compile Include="Controller\LogsController.cs" />
+    <Compile Include="Controller\MedicController.cs" />
+    <Compile Include="Controller\PacientControlller.cs" />
+    <Compile Include="Controller\SpecialtyController.cs" />
+    <Compile Include="Controller\UtilController.cs" />
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Index.Designer.cs">
       <DependentUpon>Index.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Data\Post.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Post.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Mail.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\DoctorPanel.cs">
+    <Compile Include="View\Components\Notification.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\DoctorPanel.Designer.cs">
+    <Compile Include="View\Components\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmSearch.Designer.cs">
+      <DependentUpon>FrmSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\DoctorPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\DoctorPanel.Designer.cs">
       <DependentUpon>DoctorPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PacientePanel.cs">
+    <Compile Include="View\Panels\HistorialPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\PacientePanel.Designer.cs">
+    <Compile Include="View\Panels\HistorialPanel.Designer.cs">
+      <DependentUpon>HistorialPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\HomePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\HomePanel.Designer.cs">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\PacientePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\PacientePanel.Designer.cs">
       <DependentUpon>PacientePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\PanelCitas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\PanelCitas.Designer.cs">
+      <DependentUpon>PanelCitas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\PanelConsulta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\PanelConsulta.Designer.cs">
+      <DependentUpon>PanelConsulta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\RolPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\RolPanel.Designer.cs">
+      <DependentUpon>RolPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\UserPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\UserPanel.Designer.cs">
+      <DependentUpon>UserPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\SearchPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\SearchPanel.Designer.cs">
+      <DependentUpon>SearchPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Panels\SpecialityPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Panels\SpecialityPanel.Designer.cs">
+      <DependentUpon>SpecialityPanel.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Index.resx">
       <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmSearch.resx">
+      <DependentUpon>FrmSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\HistorialPanel.resx">
+      <DependentUpon>HistorialPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\HomePanel.resx">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\PanelCitas.resx">
+      <DependentUpon>PanelCitas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\PanelConsulta.resx">
+      <DependentUpon>PanelConsulta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\RolPanel.resx">
+      <DependentUpon>RolPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\UserPanel.resx">
+      <DependentUpon>UserPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\SearchPanel.resx">
+      <DependentUpon>SearchPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\SpecialityPanel.resx">
+      <DependentUpon>SpecialityPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Model\Data\Post.dbml.layout">
+      <DependentUpon>Post.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,13 +189,22 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\DoctorPanel.resx">
+    <EmbeddedResource Include="View\Components\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Panels\DoctorPanel.resx">
       <DependentUpon>DoctorPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PacientePanel.resx">
+    <EmbeddedResource Include="View\Panels\PacientePanel.resx">
       <DependentUpon>PacientePanel.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Model\Data\Post.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Post.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,9 +218,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controller\" />
-    <Folder Include="Model\" />
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
