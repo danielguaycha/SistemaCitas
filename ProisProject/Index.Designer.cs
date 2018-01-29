@@ -596,6 +596,7 @@
             // 
             // PanelContainer
             // 
+            this.PanelContainer.Controls.Add(this.panelNotitify);
             this.PanelContainer.Controls.Add(this.panelConsulta1);
             this.PanelContainer.Controls.Add(this.panelCitas1);
             this.PanelContainer.Controls.Add(this.historialPanel1);
@@ -606,7 +607,6 @@
             this.PanelContainer.Controls.Add(this.searchPanel1);
             this.PanelContainer.Controls.Add(this.specialityPanel1);
             this.PanelContainer.Controls.Add(this.doctorPanel1);
-            this.PanelContainer.Controls.Add(this.panelNotitify);
             this.menuAnimator.SetDecoration(this.PanelContainer, BunifuAnimatorNS.DecorationType.None);
             this.PanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelContainer.Location = new System.Drawing.Point(218, 35);
@@ -616,11 +616,12 @@
             // 
             // panelConsulta1
             // 
+            this.panelConsulta1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.menuAnimator.SetDecoration(this.panelConsulta1, BunifuAnimatorNS.DecorationType.None);
             this.panelConsulta1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConsulta1.Location = new System.Drawing.Point(0, 0);
             this.panelConsulta1.Name = "panelConsulta1";
-            this.panelConsulta1.Size = new System.Drawing.Size(806, 650);
+            this.panelConsulta1.Size = new System.Drawing.Size(806, 685);
             this.panelConsulta1.TabIndex = 10;
             // 
             // panelCitas1
@@ -629,7 +630,7 @@
             this.panelCitas1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCitas1.Location = new System.Drawing.Point(0, 0);
             this.panelCitas1.Name = "panelCitas1";
-            this.panelCitas1.Size = new System.Drawing.Size(806, 650);
+            this.panelCitas1.Size = new System.Drawing.Size(806, 685);
             this.panelCitas1.TabIndex = 9;
             // 
             // historialPanel1
@@ -638,7 +639,7 @@
             this.historialPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.historialPanel1.Location = new System.Drawing.Point(0, 0);
             this.historialPanel1.Name = "historialPanel1";
-            this.historialPanel1.Size = new System.Drawing.Size(806, 650);
+            this.historialPanel1.Size = new System.Drawing.Size(806, 685);
             this.historialPanel1.TabIndex = 8;
             // 
             // rolPanel1
@@ -647,7 +648,7 @@
             this.rolPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rolPanel1.Location = new System.Drawing.Point(0, 0);
             this.rolPanel1.Name = "rolPanel1";
-            this.rolPanel1.Size = new System.Drawing.Size(806, 650);
+            this.rolPanel1.Size = new System.Drawing.Size(806, 685);
             this.rolPanel1.TabIndex = 7;
             // 
             // panelUsuario1
@@ -656,7 +657,7 @@
             this.panelUsuario1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelUsuario1.Location = new System.Drawing.Point(0, 0);
             this.panelUsuario1.Name = "panelUsuario1";
-            this.panelUsuario1.Size = new System.Drawing.Size(806, 650);
+            this.panelUsuario1.Size = new System.Drawing.Size(806, 685);
             this.panelUsuario1.TabIndex = 6;
             // 
             // pacientePanel1
@@ -665,7 +666,7 @@
             this.pacientePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pacientePanel1.Location = new System.Drawing.Point(0, 0);
             this.pacientePanel1.Name = "pacientePanel1";
-            this.pacientePanel1.Size = new System.Drawing.Size(806, 650);
+            this.pacientePanel1.Size = new System.Drawing.Size(806, 685);
             this.pacientePanel1.TabIndex = 5;
             // 
             // homePanel1
@@ -674,7 +675,7 @@
             this.homePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.homePanel1.Location = new System.Drawing.Point(0, 0);
             this.homePanel1.Name = "homePanel1";
-            this.homePanel1.Size = new System.Drawing.Size(806, 650);
+            this.homePanel1.Size = new System.Drawing.Size(806, 685);
             this.homePanel1.TabIndex = 4;
             // 
             // searchPanel1
@@ -686,7 +687,7 @@
             this.searchPanel1.Location = new System.Drawing.Point(0, 0);
             this.searchPanel1.Name = "searchPanel1";
             this.searchPanel1.PacientePanel = null;
-            this.searchPanel1.Size = new System.Drawing.Size(806, 650);
+            this.searchPanel1.Size = new System.Drawing.Size(806, 685);
             this.searchPanel1.TabIndex = 3;
             // 
             // specialityPanel1
@@ -696,7 +697,7 @@
             this.specialityPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.specialityPanel1.Location = new System.Drawing.Point(0, 0);
             this.specialityPanel1.Name = "specialityPanel1";
-            this.specialityPanel1.Size = new System.Drawing.Size(806, 650);
+            this.specialityPanel1.Size = new System.Drawing.Size(806, 685);
             this.specialityPanel1.TabIndex = 2;
             // 
             // doctorPanel1
@@ -706,12 +707,12 @@
             this.doctorPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.doctorPanel1.Location = new System.Drawing.Point(0, 0);
             this.doctorPanel1.Name = "doctorPanel1";
-            this.doctorPanel1.Size = new System.Drawing.Size(806, 650);
+            this.doctorPanel1.Size = new System.Drawing.Size(806, 685);
             this.doctorPanel1.TabIndex = 0;
             // 
             // panelNotitify
             // 
-            this.panelNotitify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelNotitify.BackColor = System.Drawing.Color.White;
             this.menuAnimator.SetDecoration(this.panelNotitify, BunifuAnimatorNS.DecorationType.None);
             this.panelNotitify.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelNotitify.Location = new System.Drawing.Point(0, 650);

@@ -1142,7 +1142,6 @@
         #endregion
 
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -1206,5 +1205,6 @@
         private System.Windows.Forms.Label lblInstructions;
         public Bunifu.Framework.UI.BunifuCustomDataGrid tbFacturas;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtSearch;
+        public System.Windows.Forms.Label label1;
     }
 }

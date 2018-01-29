@@ -48,9 +48,6 @@ namespace ProisProject.Model.Data
     partial void InsertPermisos(Permisos instance);
     partial void UpdatePermisos(Permisos instance);
     partial void DeletePermisos(Permisos instance);
-    partial void InsertRol(Rol instance);
-    partial void UpdateRol(Rol instance);
-    partial void DeleteRol(Rol instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
@@ -63,9 +60,12 @@ namespace ProisProject.Model.Data
     partial void InsertPersona(Persona instance);
     partial void UpdatePersona(Persona instance);
     partial void DeletePersona(Persona instance);
-    partial void InsertAuxFactura(AuxFactura instance);
-    partial void UpdateAuxFactura(AuxFactura instance);
-    partial void DeleteAuxFactura(AuxFactura instance);
+    partial void InsertRol_Permiso(Rol_Permiso instance);
+    partial void UpdateRol_Permiso(Rol_Permiso instance);
+    partial void DeleteRol_Permiso(Rol_Permiso instance);
+    partial void InsertRol(Rol instance);
+    partial void UpdateRol(Rol instance);
+    partial void DeleteRol(Rol instance);
     #endregion
 		
 		public PostDataContext() : 
@@ -154,22 +154,6 @@ namespace ProisProject.Model.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<Rol> Rol
-		{
-			get
-			{
-				return this.GetTable<Rol>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Rol_Permiso> Rol_Permiso
-		{
-			get
-			{
-				return this.GetTable<Rol_Permiso>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Usuario> Usuario
 		{
 			get
@@ -202,11 +186,19 @@ namespace ProisProject.Model.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<AuxFactura> AuxFactura
+		public System.Data.Linq.Table<Rol_Permiso> Rol_Permiso
 		{
 			get
 			{
-				return this.GetTable<AuxFactura>();
+				return this.GetTable<Rol_Permiso>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Rol> Rol
+		{
+			get
+			{
+				return this.GetTable<Rol>();
 			}
 		}
 	}
@@ -1388,6 +1380,8 @@ namespace ProisProject.Model.Data
 		
 		private string _valor;
 		
+		private EntitySet<Rol_Permiso> _Rol_Permiso;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1402,6 +1396,7 @@ namespace ProisProject.Model.Data
 		
 		public Permisos()
 		{
+			this._Rol_Permiso = new EntitySet<Rol_Permiso>(new Action<Rol_Permiso>(this.attach_Rol_Permiso), new Action<Rol_Permiso>(this.detach_Rol_Permiso));
 			OnCreated();
 		}
 		
@@ -1465,105 +1460,16 @@ namespace ProisProject.Model.Data
 			}
 		}
 		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rol")]
-	public partial class Rol : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_rol;
-		
-		private string _nombre_rol;
-		
-		private EntitySet<Usuario> _Usuario;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_rolChanging(int value);
-    partial void Onid_rolChanged();
-    partial void Onnombre_rolChanging(string value);
-    partial void Onnombre_rolChanged();
-    #endregion
-		
-		public Rol()
-		{
-			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_rol", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_rol
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Permisos_Rol_Permiso", Storage="_Rol_Permiso", ThisKey="id_permiso", OtherKey="id_permiso")]
+		public EntitySet<Rol_Permiso> Rol_Permiso
 		{
 			get
 			{
-				return this._id_rol;
+				return this._Rol_Permiso;
 			}
 			set
 			{
-				if ((this._id_rol != value))
-				{
-					this.Onid_rolChanging(value);
-					this.SendPropertyChanging();
-					this._id_rol = value;
-					this.SendPropertyChanged("id_rol");
-					this.Onid_rolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre_rol", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string nombre_rol
-		{
-			get
-			{
-				return this._nombre_rol;
-			}
-			set
-			{
-				if ((this._nombre_rol != value))
-				{
-					this.Onnombre_rolChanging(value);
-					this.SendPropertyChanging();
-					this._nombre_rol = value;
-					this.SendPropertyChanged("nombre_rol");
-					this.Onnombre_rolChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Usuario", ThisKey="id_rol", OtherKey="id_rol")]
-		public EntitySet<Usuario> Usuario
-		{
-			get
-			{
-				return this._Usuario;
-			}
-			set
-			{
-				this._Usuario.Assign(value);
+				this._Rol_Permiso.Assign(value);
 			}
 		}
 		
@@ -1587,61 +1493,16 @@ namespace ProisProject.Model.Data
 			}
 		}
 		
-		private void attach_Usuario(Usuario entity)
+		private void attach_Rol_Permiso(Rol_Permiso entity)
 		{
 			this.SendPropertyChanging();
-			entity.Rol = this;
+			entity.Permisos = this;
 		}
 		
-		private void detach_Usuario(Usuario entity)
+		private void detach_Rol_Permiso(Rol_Permiso entity)
 		{
 			this.SendPropertyChanging();
-			entity.Rol = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rol_Permiso")]
-	public partial class Rol_Permiso
-	{
-		
-		private System.Nullable<int> _id_rol;
-		
-		private System.Nullable<int> _id_permiso;
-		
-		public Rol_Permiso()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_rol", DbType="Int")]
-		public System.Nullable<int> id_rol
-		{
-			get
-			{
-				return this._id_rol;
-			}
-			set
-			{
-				if ((this._id_rol != value))
-				{
-					this._id_rol = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_permiso", DbType="Int")]
-		public System.Nullable<int> id_permiso
-		{
-			get
-			{
-				return this._id_permiso;
-			}
-			set
-			{
-				if ((this._id_permiso != value))
-				{
-					this._id_permiso = value;
-				}
-			}
+			entity.Permisos = null;
 		}
 	}
 	
@@ -1663,9 +1524,9 @@ namespace ProisProject.Model.Data
 		
 		private EntitySet<ControlLog> _ControlLog;
 		
-		private EntityRef<Rol> _Rol;
-		
 		private EntityRef<Persona> _Persona;
+		
+		private EntityRef<Rol> _Rol;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -1686,8 +1547,8 @@ namespace ProisProject.Model.Data
 		public Usuario()
 		{
 			this._ControlLog = new EntitySet<ControlLog>(new Action<ControlLog>(this.attach_ControlLog), new Action<ControlLog>(this.detach_ControlLog));
-			this._Rol = default(EntityRef<Rol>);
 			this._Persona = default(EntityRef<Persona>);
+			this._Rol = default(EntityRef<Rol>);
 			OnCreated();
 		}
 		
@@ -1812,40 +1673,6 @@ namespace ProisProject.Model.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Rol", ThisKey="id_rol", OtherKey="id_rol", IsForeignKey=true)]
-		public Rol Rol
-		{
-			get
-			{
-				return this._Rol.Entity;
-			}
-			set
-			{
-				Rol previousValue = this._Rol.Entity;
-				if (((previousValue != value) 
-							|| (this._Rol.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Rol.Entity = null;
-						previousValue.Usuario.Remove(this);
-					}
-					this._Rol.Entity = value;
-					if ((value != null))
-					{
-						value.Usuario.Add(this);
-						this._id_rol = value.id_rol;
-					}
-					else
-					{
-						this._id_rol = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Rol");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Persona_Usuario", Storage="_Persona", ThisKey="id_person", OtherKey="id_person", IsForeignKey=true)]
 		public Persona Persona
 		{
@@ -1876,6 +1703,40 @@ namespace ProisProject.Model.Data
 						this._id_person = default(Nullable<long>);
 					}
 					this.SendPropertyChanged("Persona");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Rol", ThisKey="id_rol", OtherKey="id_rol", IsForeignKey=true)]
+		public Rol Rol
+		{
+			get
+			{
+				return this._Rol.Entity;
+			}
+			set
+			{
+				Rol previousValue = this._Rol.Entity;
+				if (((previousValue != value) 
+							|| (this._Rol.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Rol.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._Rol.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._id_rol = value.id_rol;
+					}
+					else
+					{
+						this._id_rol = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Rol");
 				}
 			}
 		}
@@ -2897,219 +2758,269 @@ namespace ProisProject.Model.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
-	public partial class AuxFactura : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rol_Permiso")]
+	public partial class Rol_Permiso : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private long _id_person;
+		private long _id_rolper;
 		
-		private int _id_medico;
+		private System.Nullable<int> _id_rol;
 		
-		private string _nombre;
+		private System.Nullable<int> _id_permiso;
 		
-		private string _apellido;
+		private EntityRef<Permisos> _Permisos;
 		
-		private System.Nullable<int> _id_especialidad;
-		
-		private long _id_cita;
-		
-		private System.Nullable<System.DateTime> _fecha;
-		
-		private System.Nullable<decimal> _precio;
-		
-		private System.Nullable<int> _status;
-		
-		private System.Nullable<decimal> _retencion;
+		private EntityRef<Rol> _Rol;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onid_personChanging(long value);
-    partial void Onid_personChanged();
-    partial void Onid_medicoChanging(int value);
-    partial void Onid_medicoChanged();
-    partial void OnnombreChanging(string value);
-    partial void OnnombreChanged();
-    partial void OnapellidoChanging(string value);
-    partial void OnapellidoChanged();
-    partial void Onid_especialidadChanging(System.Nullable<int> value);
-    partial void Onid_especialidadChanged();
-    partial void Onid_citaChanging(long value);
-    partial void Onid_citaChanged();
-    partial void OnfechaChanging(System.Nullable<System.DateTime> value);
-    partial void OnfechaChanged();
-    partial void OnprecioChanging(System.Nullable<decimal> value);
-    partial void OnprecioChanged();
-    partial void OnstatusChanging(System.Nullable<int> value);
-    partial void OnstatusChanged();
-    partial void OnretencionChanging(System.Nullable<decimal> value);
-    partial void OnretencionChanged();
+    partial void Onid_rolperChanging(long value);
+    partial void Onid_rolperChanged();
+    partial void Onid_rolChanging(System.Nullable<int> value);
+    partial void Onid_rolChanged();
+    partial void Onid_permisoChanging(System.Nullable<int> value);
+    partial void Onid_permisoChanged();
     #endregion
 		
-		public AuxFactura()
+		public Rol_Permiso()
 		{
+			this._Permisos = default(EntityRef<Permisos>);
+			this._Rol = default(EntityRef<Rol>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_person", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long id_person
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_rolper", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long id_rolper
 		{
 			get
 			{
-				return this._id_person;
+				return this._id_rolper;
 			}
 			set
 			{
-				if ((this._id_person != value))
+				if ((this._id_rolper != value))
 				{
-					this.Onid_personChanging(value);
+					this.Onid_rolperChanging(value);
 					this.SendPropertyChanging();
-					this._id_person = value;
-					this.SendPropertyChanged("id_person");
-					this.Onid_personChanged();
+					this._id_rolper = value;
+					this.SendPropertyChanged("id_rolper");
+					this.Onid_rolperChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_medico", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_medico
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_rol", DbType="Int")]
+		public System.Nullable<int> id_rol
 		{
 			get
 			{
-				return this._id_medico;
+				return this._id_rol;
 			}
 			set
 			{
-				if ((this._id_medico != value))
+				if ((this._id_rol != value))
 				{
-					this.Onid_medicoChanging(value);
+					if (this._Rol.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_rolChanging(value);
 					this.SendPropertyChanging();
-					this._id_medico = value;
-					this.SendPropertyChanged("id_medico");
-					this.Onid_medicoChanged();
+					this._id_rol = value;
+					this.SendPropertyChanged("id_rol");
+					this.Onid_rolChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre", DbType="VarChar(100)")]
-		public string nombre
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_permiso", DbType="Int")]
+		public System.Nullable<int> id_permiso
 		{
 			get
 			{
-				return this._nombre;
+				return this._id_permiso;
 			}
 			set
 			{
-				if ((this._nombre != value))
+				if ((this._id_permiso != value))
 				{
-					this.OnnombreChanging(value);
+					if (this._Permisos.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_permisoChanging(value);
 					this.SendPropertyChanging();
-					this._nombre = value;
-					this.SendPropertyChanged("nombre");
-					this.OnnombreChanged();
+					this._id_permiso = value;
+					this.SendPropertyChanged("id_permiso");
+					this.Onid_permisoChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apellido", DbType="VarChar(100)")]
-		public string apellido
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Permisos_Rol_Permiso", Storage="_Permisos", ThisKey="id_permiso", OtherKey="id_permiso", IsForeignKey=true)]
+		public Permisos Permisos
 		{
 			get
 			{
-				return this._apellido;
+				return this._Permisos.Entity;
 			}
 			set
 			{
-				if ((this._apellido != value))
+				Permisos previousValue = this._Permisos.Entity;
+				if (((previousValue != value) 
+							|| (this._Permisos.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnapellidoChanging(value);
 					this.SendPropertyChanging();
-					this._apellido = value;
-					this.SendPropertyChanged("apellido");
-					this.OnapellidoChanged();
+					if ((previousValue != null))
+					{
+						this._Permisos.Entity = null;
+						previousValue.Rol_Permiso.Remove(this);
+					}
+					this._Permisos.Entity = value;
+					if ((value != null))
+					{
+						value.Rol_Permiso.Add(this);
+						this._id_permiso = value.id_permiso;
+					}
+					else
+					{
+						this._id_permiso = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Permisos");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_especialidad", DbType="Int")]
-		public System.Nullable<int> id_especialidad
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Rol_Permiso", Storage="_Rol", ThisKey="id_rol", OtherKey="id_rol", IsForeignKey=true)]
+		public Rol Rol
 		{
 			get
 			{
-				return this._id_especialidad;
+				return this._Rol.Entity;
 			}
 			set
 			{
-				if ((this._id_especialidad != value))
+				Rol previousValue = this._Rol.Entity;
+				if (((previousValue != value) 
+							|| (this._Rol.HasLoadedOrAssignedValue == false)))
 				{
-					this.Onid_especialidadChanging(value);
 					this.SendPropertyChanging();
-					this._id_especialidad = value;
-					this.SendPropertyChanged("id_especialidad");
-					this.Onid_especialidadChanged();
+					if ((previousValue != null))
+					{
+						this._Rol.Entity = null;
+						previousValue.Rol_Permiso.Remove(this);
+					}
+					this._Rol.Entity = value;
+					if ((value != null))
+					{
+						value.Rol_Permiso.Add(this);
+						this._id_rol = value.id_rol;
+					}
+					else
+					{
+						this._id_rol = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Rol");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_cita", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long id_cita
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Rol")]
+	public partial class Rol : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_rol;
+		
+		private string _nombre_rol;
+		
+		private System.Nullable<int> _status;
+		
+		private EntitySet<Usuario> _Usuario;
+		
+		private EntitySet<Rol_Permiso> _Rol_Permiso;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_rolChanging(int value);
+    partial void Onid_rolChanged();
+    partial void Onnombre_rolChanging(string value);
+    partial void Onnombre_rolChanged();
+    partial void OnstatusChanging(System.Nullable<int> value);
+    partial void OnstatusChanged();
+    #endregion
+		
+		public Rol()
+		{
+			this._Usuario = new EntitySet<Usuario>(new Action<Usuario>(this.attach_Usuario), new Action<Usuario>(this.detach_Usuario));
+			this._Rol_Permiso = new EntitySet<Rol_Permiso>(new Action<Rol_Permiso>(this.attach_Rol_Permiso), new Action<Rol_Permiso>(this.detach_Rol_Permiso));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_rol", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_rol
 		{
 			get
 			{
-				return this._id_cita;
+				return this._id_rol;
 			}
 			set
 			{
-				if ((this._id_cita != value))
+				if ((this._id_rol != value))
 				{
-					this.Onid_citaChanging(value);
+					this.Onid_rolChanging(value);
 					this.SendPropertyChanging();
-					this._id_cita = value;
-					this.SendPropertyChanged("id_cita");
-					this.Onid_citaChanged();
+					this._id_rol = value;
+					this.SendPropertyChanged("id_rol");
+					this.Onid_rolChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fecha", DbType="DateTime")]
-		public System.Nullable<System.DateTime> fecha
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nombre_rol", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string nombre_rol
 		{
 			get
 			{
-				return this._fecha;
+				return this._nombre_rol;
 			}
 			set
 			{
-				if ((this._fecha != value))
+				if ((this._nombre_rol != value))
 				{
-					this.OnfechaChanging(value);
+					this.Onnombre_rolChanging(value);
 					this.SendPropertyChanging();
-					this._fecha = value;
-					this.SendPropertyChanged("fecha");
-					this.OnfechaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_precio", DbType="Decimal(18,3)")]
-		public System.Nullable<decimal> precio
-		{
-			get
-			{
-				return this._precio;
-			}
-			set
-			{
-				if ((this._precio != value))
-				{
-					this.OnprecioChanging(value);
-					this.SendPropertyChanging();
-					this._precio = value;
-					this.SendPropertyChanged("precio");
-					this.OnprecioChanged();
+					this._nombre_rol = value;
+					this.SendPropertyChanged("nombre_rol");
+					this.Onnombre_rolChanged();
 				}
 			}
 		}
@@ -3134,23 +3045,29 @@ namespace ProisProject.Model.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_retencion", DbType="Decimal(18,3)")]
-		public System.Nullable<decimal> retencion
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Usuario", Storage="_Usuario", ThisKey="id_rol", OtherKey="id_rol")]
+		public EntitySet<Usuario> Usuario
 		{
 			get
 			{
-				return this._retencion;
+				return this._Usuario;
 			}
 			set
 			{
-				if ((this._retencion != value))
-				{
-					this.OnretencionChanging(value);
-					this.SendPropertyChanging();
-					this._retencion = value;
-					this.SendPropertyChanged("retencion");
-					this.OnretencionChanged();
-				}
+				this._Usuario.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rol_Rol_Permiso", Storage="_Rol_Permiso", ThisKey="id_rol", OtherKey="id_rol")]
+		public EntitySet<Rol_Permiso> Rol_Permiso
+		{
+			get
+			{
+				return this._Rol_Permiso;
+			}
+			set
+			{
+				this._Rol_Permiso.Assign(value);
 			}
 		}
 		
@@ -3172,6 +3089,30 @@ namespace ProisProject.Model.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rol = this;
+		}
+		
+		private void detach_Usuario(Usuario entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rol = null;
+		}
+		
+		private void attach_Rol_Permiso(Rol_Permiso entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rol = this;
+		}
+		
+		private void detach_Rol_Permiso(Rol_Permiso entity)
+		{
+			this.SendPropertyChanging();
+			entity.Rol = null;
 		}
 	}
 }

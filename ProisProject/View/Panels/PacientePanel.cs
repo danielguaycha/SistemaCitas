@@ -51,18 +51,14 @@ namespace ProisProject.View
                 Notification.Show("Los campos cedula, nombres, apellidos, telefono y edad son requeridos", AlertType.warm);
                 return;
             }
-
             if (!UtilController.VerificarCedula(txtCedula.Text)) {
                 Notification.Show("La cedula especificada es invalida", AlertType.warm);
                 return;
             }
-
             if (pc.exist(txtCedula.Text)) {
                 Notification.Show("Ya existe un registro con esta cedula", AlertType.info);
                 return;
             }
-
-            
             Persona per = new Persona();
             per.nombre = txtNombre.Text;
             per.apellido = txtApellido.Text;
@@ -82,7 +78,6 @@ namespace ProisProject.View
             else {
                 Notification.Show(validate, AlertType.warm);
             }
-            
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -145,12 +140,6 @@ namespace ProisProject.View
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FrmSearch fr = new FrmSearch(this);
-            fr.ShowDialog();
-        }
-
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             UtilController.validaLetras(e);
@@ -210,6 +199,17 @@ namespace ProisProject.View
             {
                 Notification.Show("Asegurese de seleccionar el paciente que desea modificar", AlertType.info, Notification.HIGHT);
             }
+        }
+
+        private void btnSearchPaciente_Click(object sender, EventArgs e)
+        {
+            FrmSearch fr = new FrmSearch(this);
+            fr.ShowDialog();
+        }
+
+        private void txteditTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilController.validaNumeros(e);
         }
     }
 }

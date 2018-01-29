@@ -44,13 +44,10 @@ namespace ProisProject.View
             this.Top = (searchPanel1.txtType.Location.X) - 30;
 
             searchPanel1.CitasPanel = citas;
-
             searchPanel1.rdCitas.Visible = true;
             searchPanel1.rdPacientes.Visible = false;
             searchPanel1.rdMedicos.Visible = false;
-
             searchPanel1.txtType.Text = "Citas";
-
             searchPanel1.rdCitas.Checked = true;
             searchPanel1.rdPacientes.Checked = false;
             searchPanel1.rdMedicos.Checked = false;

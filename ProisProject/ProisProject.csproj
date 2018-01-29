@@ -60,6 +60,8 @@
     <Compile Include="Controller\LogsController.cs" />
     <Compile Include="Controller\MedicController.cs" />
     <Compile Include="Controller\PacientControlller.cs" />
+    <Compile Include="Controller\PermControlller.cs" />
+    <Compile Include="Controller\RolController.cs" />
     <Compile Include="Controller\SpecialtyController.cs" />
     <Compile Include="Controller\UtilController.cs" />
     <Compile Include="Index.cs">

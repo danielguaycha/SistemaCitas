@@ -70,22 +70,6 @@
       <Association Name="Permisos_Rol_Permiso" Member="Rol_Permiso" ThisKey="id_permiso" OtherKey="id_permiso" Type="Rol_Permiso" />
     </Type>
   </Table>
-  <Table Name="dbo.Rol" Member="Rol">
-    <Type Name="Rol">
-      <Column Name="id_rol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="nombre_rol" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Rol_Rol_Permiso" Member="Rol_Permiso" ThisKey="id_rol" OtherKey="id_rol" Type="Rol_Permiso" />
-      <Association Name="Rol_Usuario" Member="Usuario" ThisKey="id_rol" OtherKey="id_rol" Type="Usuario" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Rol_Permiso" Member="Rol_Permiso">
-    <Type Name="Rol_Permiso">
-      <Column Name="id_rol" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="id_permiso" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Permisos_Rol_Permiso" Member="Permisos" ThisKey="id_permiso" OtherKey="id_permiso" Type="Permisos" IsForeignKey="true" />
-      <Association Name="Rol_Rol_Permiso" Member="Rol" ThisKey="id_rol" OtherKey="id_rol" Type="Rol" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Usuario" Member="Usuario">
     <Type Name="Usuario">
       <Column Name="id_usuario" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -94,8 +78,8 @@
       <Column Name="password" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Usuario_ControlLog" Member="ControlLog" ThisKey="id_usuario" OtherKey="id_usuario" Type="ControlLog" />
-      <Association Name="Rol_Usuario" Member="Rol" ThisKey="id_rol" OtherKey="id_rol" Type="Rol" IsForeignKey="true" />
       <Association Name="Persona_Usuario" Member="Persona" ThisKey="id_person" OtherKey="id_person" Type="Persona" IsForeignKey="true" />
+      <Association Name="Rol_Usuario" Member="Rol" ThisKey="id_rol" OtherKey="id_rol" Type="Rol" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Cita" Member="Cita">
@@ -142,6 +126,24 @@
       <Association Name="Persona_Medico" Member="Medico" ThisKey="id_person" OtherKey="id_person" Type="Medico" />
       <Association Name="Persona_Usuario" Member="Usuario" ThisKey="id_person" OtherKey="id_person" Type="Usuario" />
       <Association Name="Persona_Cita" Member="Cita" ThisKey="id_person" OtherKey="id_person" Type="Cita" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol_Permiso" Member="Rol_Permiso">
+    <Type Name="Rol_Permiso">
+      <Column Name="id_rolper" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_rol" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_permiso" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Permisos_Rol_Permiso" Member="Permisos" ThisKey="id_permiso" OtherKey="id_permiso" Type="Permisos" IsForeignKey="true" />
+      <Association Name="Rol_Rol_Permiso" Member="Rol" ThisKey="id_rol" OtherKey="id_rol" Type="Rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol" Member="Rol">
+    <Type Name="Rol">
+      <Column Name="id_rol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombre_rol" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rol_Usuario" Member="Usuario" ThisKey="id_rol" OtherKey="id_rol" Type="Usuario" />
+      <Association Name="Rol_Rol_Permiso" Member="Rol_Permiso" ThisKey="id_rol" OtherKey="id_rol" Type="Rol_Permiso" />
     </Type>
   </Table>
 </Database>

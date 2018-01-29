@@ -14,6 +14,8 @@ namespace ProisProject
         [STAThread]
         static void Main()
         {
+           // Controller.PermControlller perm = new Controller.PermControlller();
+           // perm.init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Index());
