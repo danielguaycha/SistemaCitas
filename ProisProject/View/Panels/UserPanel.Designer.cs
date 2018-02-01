@@ -29,22 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPanel));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnSave = new Bunifu.Framework.UI.BunifuThinButton2();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.txtRol = new System.Windows.Forms.ComboBox();
+            this.txtSendEmail = new System.Windows.Forms.CheckBox();
+            this.btnGenClave = new Bunifu.Framework.UI.BunifuThinButton2();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtClave = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCedula = new System.Windows.Forms.TextBox();
-            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnSearchUser = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lblInstructions = new System.Windows.Forms.Label();
             this.txtSearch = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -101,7 +103,7 @@
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.btnSave);
             this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.bunifuFlatButton1);
+            this.tabPage1.Controls.Add(this.btnSearchUser);
             this.tabPage1.Controls.Add(this.lblInstructions);
             this.tabPage1.Controls.Add(this.txtSearch);
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
@@ -130,110 +132,138 @@
             this.btnSave.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.btnSave.IdleForecolor = System.Drawing.Color.White;
             this.btnSave.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.btnSave.Location = new System.Drawing.Point(460, 341);
+            this.btnSave.Location = new System.Drawing.Point(460, 381);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(115, 42);
             this.btnSave.TabIndex = 23;
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.bunifuThinButton21);
+            this.groupBox1.Controls.Add(this.txtRol);
+            this.groupBox1.Controls.Add(this.txtSendEmail);
+            this.groupBox1.Controls.Add(this.btnGenClave);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtClave);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtCedula);
             this.groupBox1.Location = new System.Drawing.Point(48, 132);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(527, 190);
+            this.groupBox1.Size = new System.Drawing.Size(527, 229);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Acceso al sistema";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(79, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 18);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Correo: ";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(159, 81);
+            this.txtEmail.MaxLength = 10;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(342, 24);
+            this.txtEmail.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(103, 80);
+            this.label4.Location = new System.Drawing.Point(103, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 18);
             this.label4.TabIndex = 9;
             this.label4.Text = "Rol: ";
             // 
-            // comboBox1
+            // txtRol
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtRol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(159, 77);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(342, 26);
-            this.comboBox1.TabIndex = 8;
+            this.txtRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtRol.FormattingEnabled = true;
+            this.txtRol.Location = new System.Drawing.Point(159, 115);
+            this.txtRol.Name = "txtRol";
+            this.txtRol.Size = new System.Drawing.Size(342, 26);
+            this.txtRol.TabIndex = 8;
+            this.txtRol.Click += new System.EventHandler(this.txtRol_Click);
             // 
-            // checkBox1
+            // txtSendEmail
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(159, 153);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(180, 22);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Enviar clave por correo";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.txtSendEmail.AutoSize = true;
+            this.txtSendEmail.Location = new System.Drawing.Point(159, 191);
+            this.txtSendEmail.Name = "txtSendEmail";
+            this.txtSendEmail.Size = new System.Drawing.Size(180, 22);
+            this.txtSendEmail.TabIndex = 7;
+            this.txtSendEmail.Text = "Enviar clave por correo";
+            this.txtSendEmail.UseVisualStyleBackColor = true;
             // 
-            // bunifuThinButton21
+            // btnGenClave
             // 
-            this.bunifuThinButton21.ActiveBorderThickness = 1;
-            this.bunifuThinButton21.ActiveCornerRadius = 20;
-            this.bunifuThinButton21.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.ActiveForecolor = System.Drawing.Color.White;
-            this.bunifuThinButton21.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuThinButton21.BackColor = System.Drawing.Color.White;
-            this.bunifuThinButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton21.BackgroundImage")));
-            this.bunifuThinButton21.ButtonText = "Generar clave";
-            this.bunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuThinButton21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuThinButton21.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.IdleBorderThickness = 1;
-            this.bunifuThinButton21.IdleCornerRadius = 20;
-            this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
-            this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton21.Location = new System.Drawing.Point(368, 107);
-            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bunifuThinButton21.Name = "bunifuThinButton21";
-            this.bunifuThinButton21.Size = new System.Drawing.Size(133, 35);
-            this.bunifuThinButton21.TabIndex = 6;
-            this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGenClave.ActiveBorderThickness = 1;
+            this.btnGenClave.ActiveCornerRadius = 20;
+            this.btnGenClave.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.btnGenClave.ActiveForecolor = System.Drawing.Color.White;
+            this.btnGenClave.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.btnGenClave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenClave.BackColor = System.Drawing.Color.White;
+            this.btnGenClave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGenClave.BackgroundImage")));
+            this.btnGenClave.ButtonText = "Generar clave";
+            this.btnGenClave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGenClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenClave.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnGenClave.IdleBorderThickness = 1;
+            this.btnGenClave.IdleCornerRadius = 20;
+            this.btnGenClave.IdleFillColor = System.Drawing.Color.White;
+            this.btnGenClave.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnGenClave.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnGenClave.Location = new System.Drawing.Point(368, 145);
+            this.btnGenClave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGenClave.Name = "btnGenClave";
+            this.btnGenClave.Size = new System.Drawing.Size(133, 35);
+            this.btnGenClave.TabIndex = 6;
+            this.btnGenClave.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnGenClave.Click += new System.EventHandler(this.btnGenClave_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(93, 115);
+            this.label3.Location = new System.Drawing.Point(93, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 18);
             this.label3.TabIndex = 5;
             this.label3.Text = "Clave:";
             // 
-            // textBox1
+            // txtClave
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtClave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(159, 113);
-            this.textBox1.MaxLength = 10;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 24);
-            this.textBox1.TabIndex = 4;
+            this.txtClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClave.Location = new System.Drawing.Point(159, 151);
+            this.txtClave.MaxLength = 10;
+            this.txtClave.Name = "txtClave";
+            this.txtClave.Size = new System.Drawing.Size(202, 24);
+            this.txtClave.TabIndex = 4;
             // 
             // label2
             // 
@@ -258,40 +288,41 @@
             this.txtCedula.Size = new System.Drawing.Size(342, 24);
             this.txtCedula.TabIndex = 2;
             // 
-            // bunifuFlatButton1
+            // btnSearchUser
             // 
-            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(93)))), ((int)(((byte)(123)))));
-            this.bunifuFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.bunifuFlatButton1.BorderRadius = 5;
-            this.bunifuFlatButton1.ButtonText = "";
-            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton1.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton1.Iconimage")));
-            this.bunifuFlatButton1.Iconimage_right = null;
-            this.bunifuFlatButton1.Iconimage_right_Selected = null;
-            this.bunifuFlatButton1.Iconimage_Selected = null;
-            this.bunifuFlatButton1.IconMarginLeft = 0;
-            this.bunifuFlatButton1.IconMarginRight = 0;
-            this.bunifuFlatButton1.IconRightVisible = false;
-            this.bunifuFlatButton1.IconRightZoom = 0D;
-            this.bunifuFlatButton1.IconVisible = true;
-            this.bunifuFlatButton1.IconZoom = 52D;
-            this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(542, 61);
-            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
-            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(93)))), ((int)(((byte)(123)))));
-            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(33, 33);
-            this.bunifuFlatButton1.TabIndex = 21;
-            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchUser.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(93)))), ((int)(((byte)(123)))));
+            this.btnSearchUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnSearchUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSearchUser.BorderRadius = 5;
+            this.btnSearchUser.ButtonText = "";
+            this.btnSearchUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchUser.DisabledColor = System.Drawing.Color.Gray;
+            this.btnSearchUser.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnSearchUser.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnSearchUser.Iconimage")));
+            this.btnSearchUser.Iconimage_right = null;
+            this.btnSearchUser.Iconimage_right_Selected = null;
+            this.btnSearchUser.Iconimage_Selected = null;
+            this.btnSearchUser.IconMarginLeft = 0;
+            this.btnSearchUser.IconMarginRight = 0;
+            this.btnSearchUser.IconRightVisible = false;
+            this.btnSearchUser.IconRightZoom = 0D;
+            this.btnSearchUser.IconVisible = false;
+            this.btnSearchUser.IconZoom = 52D;
+            this.btnSearchUser.IsTab = false;
+            this.btnSearchUser.Location = new System.Drawing.Point(542, 61);
+            this.btnSearchUser.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearchUser.Name = "btnSearchUser";
+            this.btnSearchUser.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnSearchUser.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(93)))), ((int)(((byte)(123)))));
+            this.btnSearchUser.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnSearchUser.selected = false;
+            this.btnSearchUser.Size = new System.Drawing.Size(33, 33);
+            this.btnSearchUser.TabIndex = 21;
+            this.btnSearchUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearchUser.Textcolor = System.Drawing.Color.White;
+            this.btnSearchUser.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchUser.Click += new System.EventHandler(this.btnSearchUser_Click);
             // 
             // lblInstructions
             // 
@@ -309,6 +340,7 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.Enabled = false;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
             this.txtSearch.HintForeColor = System.Drawing.Color.Empty;
@@ -534,8 +566,8 @@
             // 
             this.tbSearch.AllowUserToAddRows = false;
             this.tbSearch.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tbSearch.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tbSearch.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -543,14 +575,14 @@
             this.tbSearch.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tbSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tbSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tbSearch.ColumnHeadersHeight = 30;
             this.tbSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbSearch.DoubleBuffered = true;
@@ -622,23 +654,20 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
+        private Bunifu.Framework.UI.BunifuFlatButton btnSearchUser;
         private System.Windows.Forms.Label lblInstructions;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
+        private System.Windows.Forms.ComboBox txtRol;
+        private System.Windows.Forms.CheckBox txtSendEmail;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnGenClave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -652,5 +681,10 @@
         public Bunifu.Framework.UI.BunifuThinButton2 btnDelete;
         public Bunifu.Framework.UI.BunifuThinButton2 btnUpdate;
         private Bunifu.Framework.UI.BunifuThinButton2 btnSave;
+        public System.Windows.Forms.Label label1;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox txtSearch;
+        public System.Windows.Forms.TextBox txtCedula;
+        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TextBox txtEmail;
     }
 }

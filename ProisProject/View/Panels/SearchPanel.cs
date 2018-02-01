@@ -21,15 +21,14 @@ namespace ProisProject.View
         private DoctorPanel doctorPanel;
         private Panels.PanelCitas citasPanel;
         private PacientePanel pacientePanel;
-
+        private UserPanel userPanel;
 
         private List<Medico> listaMedicos;
         private List<Persona> listaPacientes;
         private List<Cita> listaCitas;
         public SearchPanel()
         {
-            InitializeComponent();
-           
+            InitializeComponent();           
         }
 
         public void setinstructions(int i)
@@ -44,6 +43,9 @@ namespace ProisProject.View
                     break;
                 case 3:
                     lblInstructions.Text = "Busqueda por Médico, Fecha, Estado";
+                    break;
+                default:
+                    lblInstructions.Text = "Busqueda por nombres o cedula";
                     break;
             }
             txtSearch.Focus();
@@ -64,7 +66,7 @@ namespace ProisProject.View
                 datatableSearch.Columns.Add("Telefono");
 
                 var q = from medicos in post.Medico
-                        where medicos.Especialidad.status==1 && (medicos.Persona.nombre.Contains(data)
+                        where medicos.Especialidad.status == 1 && (medicos.Persona.nombre.Contains(data)
                         || medicos.Persona.dni.Contains(data)
                         || medicos.Especialidad.nombre.Contains(data)
                         || medicos.Persona.apellido.Contains(data))
@@ -105,7 +107,7 @@ namespace ProisProject.View
                 datatableSearch.Columns.Add("Edad");
 
                 var q = from per in post.Persona
-                        where per.status == 1 && per.tipo == 3 &&(per.dni.Contains(data)
+                        where per.status == 1 && per.tipo == 3 && (per.dni.Contains(data)
                         || per.nombre.Contains(data)
                         || per.apellido.Contains(data))
                         select per;
@@ -130,7 +132,8 @@ namespace ProisProject.View
                     lblAviso.Text = "No hemos encontrado coincidencias con tu busqueda";
                 }
             }
-            else if (rdCitas.Checked) {
+            else if (rdCitas.Checked)
+            {
                 listaCitas = null;
                 lblAviso.Text = "";
                 listaCitas = new List<Cita>();
@@ -192,6 +195,33 @@ namespace ProisProject.View
                     lblAviso.Text = "No hemos encontrado coincidencias con tu busqueda";
                 }
             }
+            else {
+                datatableSearch = new DataTable();
+                datatableSearch.Columns.Add("Cedula");
+                datatableSearch.Columns.Add("Nombres");
+                datatableSearch.Columns.Add("Email");
+                datatableSearch.Columns.Add("Tipo");
+
+                var q = from p in post.Persona where p.status == 1 && 
+                        (p.nombre.Contains(data) || p.apellido.Contains(data) || p.dni.Contains(data))
+                        select p;
+                q = q.OrderByDescending(c => c.status).Take(20);
+                if (q.Count() > 0)
+                {
+                    foreach (Persona p in q)
+                    {
+                        string email = p.email;
+                        if (p.email == null || p.email == "")
+                            email = "No Disponible";
+                        datatableSearch.Rows.Add(new Object[] { p.dni, p.nombre+" "+p.apellido,email, p.tipo });
+                    }
+                }
+                else {
+                    lblAviso.ForeColor = Color.Red;
+                    lblAviso.Text = "No hemos encontrado coincidencias con tu busqueda";
+                }
+
+            }
             
             tbSearch.DataSource = datatableSearch;
         }
@@ -247,8 +277,6 @@ namespace ProisProject.View
             } else if (CitasPanel != null && rdCitas.Checked) {
                 if (tbSearch.SelectedRows.Count > 0)
                 {
-
-
                     String ap = (listaCitas[tbSearch.CurrentRow.Index].Medico.Persona.apellido);
                     decimal valmod = (listaCitas[tbSearch.CurrentRow.Index]).Medico.Especialidad.costo.Value;
                     decimal reten = (listaCitas[tbSearch.CurrentRow.Index]).retencion.Value;
@@ -257,19 +285,19 @@ namespace ProisProject.View
                     CitasPanel.id_pacient = (listaCitas[tbSearch.CurrentRow.Index]).Persona.id_person;
                     citasPanel.id_cita = (listaCitas[tbSearch.CurrentRow.Index]).id_cita;
                     CitasPanel.txteEspecialidad.Items.Clear();
-                    CitasPanel.txteNombresDoc.Text = listaCitas[tbSearch.CurrentRow.Index].Medico.Persona.nombre+" "+ap;
+                    CitasPanel.txteNombresDoc.Text = listaCitas[tbSearch.CurrentRow.Index].Medico.Persona.nombre + " " + ap;
                     CitasPanel.txteEspecialidad.Items.Add(listaCitas[tbSearch.CurrentRow.Index].Medico.Especialidad.nombre);
                     CitasPanel.txteEspecialidad.SelectedIndex = 0;
-                    CitasPanel.txteNombrePAc.Text = listaCitas[tbSearch.CurrentRow.Index].Persona.nombre +" "+ listaCitas[tbSearch.CurrentRow.Index].Persona.apellido;
+                    CitasPanel.txteNombrePAc.Text = listaCitas[tbSearch.CurrentRow.Index].Persona.nombre + " " + listaCitas[tbSearch.CurrentRow.Index].Persona.apellido;
                     CitasPanel.txteApellidos.Text = listaCitas[tbSearch.CurrentRow.Index].Persona.apellido;
                     CitasPanel.txteEdad.Text = listaCitas[tbSearch.CurrentRow.Index].Persona.edad.ToString();
                     CitasPanel.txteTelefono.Text = listaCitas[tbSearch.CurrentRow.Index].Persona.telefono;
                     CitasPanel.txteCedula.Text = listaCitas[tbSearch.CurrentRow.Index].Persona.dni;
 
                     CitasPanel.txteFecha.Text = listaCitas[tbSearch.CurrentRow.Index].fecha.ToString();
-                    CitasPanel.txteCosto.Text = valmod+"";
-                    CitasPanel.txteRetencion.Text = reten+"";
-                    CitasPanel.textPendientePago.Checked = (listaCitas[tbSearch.CurrentRow.Index].status==0);
+                    CitasPanel.txteCosto.Text = valmod + "";
+                    CitasPanel.txteRetencion.Text = reten + "";
+                    CitasPanel.textPendientePago.Checked = (listaCitas[tbSearch.CurrentRow.Index].status == 0);
                     CitasPanel.btnAnular.Show();
                     CitasPanel.btnCancel.Show();
                     CitasPanel.btnUpdate.Show();
@@ -282,7 +310,6 @@ namespace ProisProject.View
             {
                 if (tbSearch.SelectedRows.Count > 0)
                 {
-
                     String dir = listaPacientes[tbSearch.CurrentRow.Index].direccion;
                     String email = listaPacientes[tbSearch.CurrentRow.Index].email;
                     PacientePanel.oldDni = listaPacientes[tbSearch.CurrentRow.Index].dni.ToString();
@@ -296,6 +323,16 @@ namespace ProisProject.View
                     PacientePanel.btnCancel.Show();
                     PacientePanel.btnDelete.Show();
                     PacientePanel.btnUpdate.Show();
+                    this.Parent.Parent.Dispose();
+                }
+            }
+            else if (UserPanel !=null && !rdCitas.Checked && !rdMedicos.Checked
+                && !rdPacientes.Checked) {
+                if (tbSearch.SelectedRows.Count > 0)
+                {
+                    UserPanel.txtCedula.Text = tbSearch.CurrentRow.Cells[0].Value.ToString();
+                    UserPanel.txtSearch.Text = tbSearch.CurrentRow.Cells[1].Value.ToString();
+                    UserPanel.txtEmail.Text = tbSearch.CurrentRow.Cells[2].Value.ToString();
                     this.Parent.Parent.Dispose();
                 }
             }
@@ -334,14 +371,29 @@ namespace ProisProject.View
             }
         }
 
+        public UserPanel UserPanel
+        {
+            get
+            {
+                return userPanel;
+            }
+
+            set
+            {
+                userPanel = value;
+            }
+        }
+
         private void SearchPanel_Load(object sender, EventArgs e)
         {
             if (rdMedicos.Checked)
                 setinstructions(1);
-            if (rdPacientes.Checked)
+            else if (rdPacientes.Checked)
                 setinstructions(2);
-            if (rdCitas.Checked)
+            else if (rdCitas.Checked)
                 setinstructions(3);
+            else
+                setinstructions(4);
             this.ActiveControl = txtSearch;
 
             searchAction("");

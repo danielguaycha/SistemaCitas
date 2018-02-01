@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProisProject.View.Panels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -88,6 +89,23 @@ namespace ProisProject.View
             searchPanel1.txtType.Text = "Pacientes";
         }
 
+        public FrmSearch(UserPanel p) {
+            InitializeComponent();
+            searchPanel1.UserPanel = p;
+            int x = Screen.PrimaryScreen.WorkingArea.Width;
+            this.Left = ((x - this.Width) / 2) + 109;
+            this.Top = (p.label1.Location.X) + 90;
+
+            searchPanel1.rdCitas.Visible = false;
+            searchPanel1.rdCitas.Checked = false;
+
+            searchPanel1.rdMedicos.Checked = false;
+            searchPanel1.rdMedicos.Visible = false;
+
+            searchPanel1.rdPacientes.Visible = false;
+            searchPanel1.rdPacientes.Checked = false;
+            searchPanel1.txtType.Text = "Usuarios";
+        }
         private void bunifuImageButton2_Click(object sender, EventArgs e)
         {
             this.Dispose();

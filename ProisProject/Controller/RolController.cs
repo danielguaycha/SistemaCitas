@@ -77,5 +77,10 @@ namespace ProisProject.Controller
             }
             db.SubmitChanges();
         }
+
+        public int getRolIdByName(String name) {
+            Rol uptrol = db.Rol.Where(uptr => uptr.nombre_rol == name).Single();
+            return uptrol.id_rol;
+        }
     }
 }

@@ -5,6 +5,7 @@ using ProisProject.Controller;
 using System.Linq;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace ProisProject.Controller
 {
@@ -145,9 +146,112 @@ namespace ProisProject.Controller
                 return;
             }
         }
-
         public static string f(decimal val) {
             return string.Format("{0:C}", val);
+        }
+        public static string GenerarContraseña()
+        {
+            Random r = new Random();
+            int longitud = r.Next(5, 12);
+            char[] contra = new char[longitud];
+            Random rand = new Random();
+            int aletorio;
+            int d;
+            string pass = "";
+            for (int i = 0; i < longitud; i++)
+            {
+                d = rand.Next(1, 4);
+                switch (d)
+                {
+                    case 1://NUMEROS
+                        aletorio = rand.Next(48, 57);
+                        contra[i] = (char)aletorio;
+                        break;
+                    case 2://MAYUSCULAS
+                        aletorio = rand.Next(65, 90);
+                        contra[i] = (char)aletorio;
+                        break;
+                    case 3://minusculas
+                        aletorio = rand.Next(97, 122);
+                        contra[i] = (char)aletorio;
+                        break;
+                }
+            }
+            for (int i = 0; i < longitud; i++)
+            {
+                pass = pass + contra[i].ToString();
+            }
+            return pass;
+        }
+
+        public static string Encriptar(this string _cadenaAencriptar)
+        {
+            string result = string.Empty;
+            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(_cadenaAencriptar);
+            result = Convert.ToBase64String(encryted);
+            return result;
+        }
+
+        public static string DesEncriptar(this string _cadenaAdesencriptar)
+        {
+            string result = string.Empty;
+            byte[] decryted = Convert.FromBase64String(_cadenaAdesencriptar);
+            //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
+            result = System.Text.Encoding.Unicode.GetString(decryted);
+            return result;
+        }
+
+        private static bool invalid = false;
+
+        public static bool IsValidEmail(string strIn)
+        {
+            invalid = false;
+            if (String.IsNullOrEmpty(strIn))
+                return false;
+
+            // Use IdnMapping class to convert Unicode domain names.
+            try
+            {
+                strIn = Regex.Replace(strIn, @"(@)(.+)$", DomainMapper,
+                                      RegexOptions.None, TimeSpan.FromMilliseconds(200));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+
+            if (invalid)
+                return false;
+
+            // Return true if strIn is in valid e-mail format.
+            try
+            {
+                return Regex.IsMatch(strIn,
+                      @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                      @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                      RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                return false;
+            }
+        }
+
+        private static string DomainMapper(Match match)
+        {
+            // IdnMapping class with default property values.
+            IdnMapping idn = new IdnMapping();
+
+            string domainName = match.Groups[2].Value;
+            try
+            {
+                domainName = idn.GetAscii(domainName);
+            }
+            catch (ArgumentException)
+            {
+                invalid = true;
+            }
+            return match.Groups[1].Value + domainName;
         }
     }
 }

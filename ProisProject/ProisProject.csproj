@@ -63,6 +63,7 @@
     <Compile Include="Controller\PermControlller.cs" />
     <Compile Include="Controller\RolController.cs" />
     <Compile Include="Controller\SpecialtyController.cs" />
+    <Compile Include="Controller\UserController.cs" />
     <Compile Include="Controller\UtilController.cs" />
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
