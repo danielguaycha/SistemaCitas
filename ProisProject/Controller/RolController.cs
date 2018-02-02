@@ -82,5 +82,10 @@ namespace ProisProject.Controller
             Rol uptrol = db.Rol.Where(uptr => uptr.nombre_rol == name).Single();
             return uptrol.id_rol;
         }
+
+        public Rol getRol(String name) {
+            Rol uptrol = db.Rol.Where(uptr => uptr.nombre_rol == name).Single();
+            return uptrol;
+        }
     }
 }

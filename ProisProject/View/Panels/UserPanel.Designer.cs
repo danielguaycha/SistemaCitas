@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserPanel));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -50,18 +50,24 @@
             this.lblInstructions = new System.Windows.Forms.Label();
             this.txtSearch = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txteditCorreo = new System.Windows.Forms.TextBox();
             this.btnCancel = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnDelete = new Bunifu.Framework.UI.BunifuThinButton2();
             this.btnUpdate = new Bunifu.Framework.UI.BunifuThinButton2();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.bunifuThinButton22 = new Bunifu.Framework.UI.BunifuThinButton2();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.tbSearch = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.txteditRol = new System.Windows.Forms.ComboBox();
+            this.txtEditSendEmail = new System.Windows.Forms.CheckBox();
+            this.btnEditGenerate = new Bunifu.Framework.UI.BunifuThinButton2();
+            this.txtEditClave = new System.Windows.Forms.TextBox();
+            this.txtEditCedula = new System.Windows.Forms.TextBox();
+            this.tbUsers = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.panel1.SuspendLayout();
@@ -69,7 +75,7 @@
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -359,18 +365,20 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label9);
+            this.tabPage2.Controls.Add(this.txteditCorreo);
             this.tabPage2.Controls.Add(this.btnCancel);
             this.tabPage2.Controls.Add(this.btnDelete);
             this.tabPage2.Controls.Add(this.btnUpdate);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Controls.Add(this.comboBox2);
-            this.tabPage2.Controls.Add(this.checkBox2);
-            this.tabPage2.Controls.Add(this.bunifuThinButton22);
-            this.tabPage2.Controls.Add(this.textBox2);
-            this.tabPage2.Controls.Add(this.textBox3);
-            this.tabPage2.Controls.Add(this.tbSearch);
+            this.tabPage2.Controls.Add(this.txteditRol);
+            this.tabPage2.Controls.Add(this.txtEditSendEmail);
+            this.tabPage2.Controls.Add(this.btnEditGenerate);
+            this.tabPage2.Controls.Add(this.txtEditClave);
+            this.tabPage2.Controls.Add(this.txtEditCedula);
+            this.tabPage2.Controls.Add(this.tbUsers);
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -378,6 +386,29 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Listar / Modificar";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(169, 83);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 18);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Correo: ";
+            // 
+            // txteditCorreo
+            // 
+            this.txteditCorreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txteditCorreo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txteditCorreo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txteditCorreo.Location = new System.Drawing.Point(249, 80);
+            this.txteditCorreo.MaxLength = 10;
+            this.txteditCorreo.Name = "txteditCorreo";
+            this.txteditCorreo.ReadOnly = true;
+            this.txteditCorreo.Size = new System.Drawing.Size(342, 24);
+            this.txteditCorreo.TabIndex = 28;
             // 
             // btnCancel
             // 
@@ -405,6 +436,7 @@
             this.btnCancel.TabIndex = 27;
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnDelete
             // 
@@ -432,6 +464,7 @@
             this.btnDelete.TabIndex = 26;
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnDelete.Visible = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -459,6 +492,7 @@
             this.btnUpdate.TabIndex = 25;
             this.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnUpdate.Visible = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // label5
             // 
@@ -474,7 +508,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(194, 87);
+            this.label6.Location = new System.Drawing.Point(194, 113);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 18);
             this.label6.TabIndex = 23;
@@ -490,119 +524,146 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "Usuario - Cedula: ";
             // 
-            // comboBox2
+            // txteditRol
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txteditRol.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(249, 48);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(342, 26);
-            this.comboBox2.TabIndex = 21;
+            this.txteditRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txteditRol.FormattingEnabled = true;
+            this.txteditRol.Location = new System.Drawing.Point(249, 48);
+            this.txteditRol.Name = "txteditRol";
+            this.txteditRol.Size = new System.Drawing.Size(342, 26);
+            this.txteditRol.TabIndex = 21;
             // 
-            // checkBox2
+            // txtEditSendEmail
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(249, 119);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(180, 22);
-            this.checkBox2.TabIndex = 20;
-            this.checkBox2.Text = "Enviar clave por correo";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.txtEditSendEmail.AutoSize = true;
+            this.txtEditSendEmail.Location = new System.Drawing.Point(249, 145);
+            this.txtEditSendEmail.Name = "txtEditSendEmail";
+            this.txtEditSendEmail.Size = new System.Drawing.Size(180, 22);
+            this.txtEditSendEmail.TabIndex = 20;
+            this.txtEditSendEmail.Text = "Enviar clave por correo";
+            this.txtEditSendEmail.UseVisualStyleBackColor = true;
             // 
-            // bunifuThinButton22
+            // btnEditGenerate
             // 
-            this.bunifuThinButton22.ActiveBorderThickness = 1;
-            this.bunifuThinButton22.ActiveCornerRadius = 20;
-            this.bunifuThinButton22.ActiveFillColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.ActiveForecolor = System.Drawing.Color.White;
-            this.bunifuThinButton22.ActiveLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuThinButton22.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuThinButton22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton22.BackgroundImage")));
-            this.bunifuThinButton22.ButtonText = "Generar clave";
-            this.bunifuThinButton22.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuThinButton22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuThinButton22.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton22.IdleBorderThickness = 1;
-            this.bunifuThinButton22.IdleCornerRadius = 20;
-            this.bunifuThinButton22.IdleFillColor = System.Drawing.Color.White;
-            this.bunifuThinButton22.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton22.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.bunifuThinButton22.Location = new System.Drawing.Point(458, 78);
-            this.bunifuThinButton22.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bunifuThinButton22.Name = "bunifuThinButton22";
-            this.bunifuThinButton22.Size = new System.Drawing.Size(133, 35);
-            this.bunifuThinButton22.TabIndex = 19;
-            this.bunifuThinButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEditGenerate.ActiveBorderThickness = 1;
+            this.btnEditGenerate.ActiveCornerRadius = 20;
+            this.btnEditGenerate.ActiveFillColor = System.Drawing.Color.SeaGreen;
+            this.btnEditGenerate.ActiveForecolor = System.Drawing.Color.White;
+            this.btnEditGenerate.ActiveLineColor = System.Drawing.Color.SeaGreen;
+            this.btnEditGenerate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditGenerate.BackColor = System.Drawing.Color.Transparent;
+            this.btnEditGenerate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEditGenerate.BackgroundImage")));
+            this.btnEditGenerate.ButtonText = "Generar clave";
+            this.btnEditGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditGenerate.ForeColor = System.Drawing.Color.SeaGreen;
+            this.btnEditGenerate.IdleBorderThickness = 1;
+            this.btnEditGenerate.IdleCornerRadius = 20;
+            this.btnEditGenerate.IdleFillColor = System.Drawing.Color.White;
+            this.btnEditGenerate.IdleForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnEditGenerate.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.btnEditGenerate.Location = new System.Drawing.Point(458, 104);
+            this.btnEditGenerate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEditGenerate.Name = "btnEditGenerate";
+            this.btnEditGenerate.Size = new System.Drawing.Size(133, 35);
+            this.btnEditGenerate.TabIndex = 19;
+            this.btnEditGenerate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnEditGenerate.Click += new System.EventHandler(this.btnEditGenerate_Click);
             // 
-            // textBox2
+            // txtEditClave
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtEditClave.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(249, 84);
-            this.textBox2.MaxLength = 10;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(202, 24);
-            this.textBox2.TabIndex = 18;
+            this.txtEditClave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEditClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditClave.Location = new System.Drawing.Point(249, 110);
+            this.txtEditClave.MaxLength = 10;
+            this.txtEditClave.Name = "txtEditClave";
+            this.txtEditClave.Size = new System.Drawing.Size(202, 24);
+            this.txtEditClave.TabIndex = 18;
             // 
-            // textBox3
+            // txtEditCedula
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtEditCedula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(249, 17);
-            this.textBox3.MaxLength = 10;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(342, 24);
-            this.textBox3.TabIndex = 17;
+            this.txtEditCedula.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEditCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditCedula.Location = new System.Drawing.Point(249, 17);
+            this.txtEditCedula.MaxLength = 10;
+            this.txtEditCedula.Name = "txtEditCedula";
+            this.txtEditCedula.ReadOnly = true;
+            this.txtEditCedula.Size = new System.Drawing.Size(342, 24);
+            this.txtEditCedula.TabIndex = 17;
             // 
-            // tbSearch
+            // tbUsers
             // 
-            this.tbSearch.AllowUserToAddRows = false;
-            this.tbSearch.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tbSearch.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.tbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbUsers.AllowUserToAddRows = false;
+            this.tbUsers.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tbUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.tbUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSearch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tbSearch.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.tbSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbSearch.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tbSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.tbSearch.ColumnHeadersHeight = 30;
-            this.tbSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbSearch.DoubleBuffered = true;
-            this.tbSearch.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.tbSearch.EnableHeadersVisualStyles = false;
-            this.tbSearch.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.tbSearch.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            this.tbSearch.HeaderForeColor = System.Drawing.SystemColors.HighlightText;
-            this.tbSearch.Location = new System.Drawing.Point(29, 154);
-            this.tbSearch.MultiSelect = false;
-            this.tbSearch.Name = "tbSearch";
-            this.tbSearch.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.tbSearch.RowHeadersVisible = false;
-            this.tbSearch.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
-            this.tbSearch.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.tbSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tbSearch.Size = new System.Drawing.Size(562, 247);
-            this.tbSearch.TabIndex = 16;
-            this.tbSearch.TabStop = false;
+            this.tbUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tbUsers.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.tbUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbUsers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tbUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.tbUsers.ColumnHeadersHeight = 30;
+            this.tbUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Cedula,
+            this.Nombre,
+            this.Rol,
+            this.Estado});
+            this.tbUsers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tbUsers.DoubleBuffered = true;
+            this.tbUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.tbUsers.EnableHeadersVisualStyles = false;
+            this.tbUsers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.tbUsers.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            this.tbUsers.HeaderForeColor = System.Drawing.SystemColors.HighlightText;
+            this.tbUsers.Location = new System.Drawing.Point(29, 173);
+            this.tbUsers.MultiSelect = false;
+            this.tbUsers.Name = "tbUsers";
+            this.tbUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.tbUsers.RowHeadersVisible = false;
+            this.tbUsers.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbUsers.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(195)))), ((int)(((byte)(199)))));
+            this.tbUsers.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.tbUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tbUsers.Size = new System.Drawing.Size(562, 226);
+            this.tbUsers.TabIndex = 16;
+            this.tbUsers.TabStop = false;
+            this.tbUsers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.tbUsers_CellMouseDoubleClick);
+            // 
+            // Cedula
+            // 
+            this.Cedula.HeaderText = "Cedula";
+            this.Cedula.Name = "Cedula";
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Rol
+            // 
+            this.Rol.HeaderText = "Rol";
+            this.Rol.Name = "Rol";
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
             // 
             // label1
             // 
@@ -638,6 +699,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "UserPanel";
             this.Size = new System.Drawing.Size(634, 552);
+            this.Load += new System.EventHandler(this.UserPanel_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -646,7 +708,7 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbUsers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -671,12 +733,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton22;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        public Bunifu.Framework.UI.BunifuCustomDataGrid tbSearch;
+        private System.Windows.Forms.ComboBox txteditRol;
+        private System.Windows.Forms.CheckBox txtEditSendEmail;
+        private Bunifu.Framework.UI.BunifuThinButton2 btnEditGenerate;
+        private System.Windows.Forms.TextBox txtEditClave;
+        private System.Windows.Forms.TextBox txtEditCedula;
+        public Bunifu.Framework.UI.BunifuCustomDataGrid tbUsers;
         public Bunifu.Framework.UI.BunifuThinButton2 btnCancel;
         public Bunifu.Framework.UI.BunifuThinButton2 btnDelete;
         public Bunifu.Framework.UI.BunifuThinButton2 btnUpdate;
@@ -686,5 +748,11 @@
         public System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.TextBox txteditCorreo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
     }
 }
