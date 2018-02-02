@@ -114,6 +114,14 @@
             this.label35 = new System.Windows.Forms.Label();
             this.txteditDir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.radioEditDoctor = new System.Windows.Forms.RadioButton();
+            this.radioEditEnfermera = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.rdEnfermera = new System.Windows.Forms.RadioButton();
+            this.rdDoctor = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -149,6 +157,8 @@
             this.splitContainer6.Panel1.SuspendLayout();
             this.splitContainer6.Panel2.SuspendLayout();
             this.splitContainer6.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -571,6 +581,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.panel4);
             this.splitContainer1.Panel2.Controls.Add(this.txtEstadoCiv);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.txtTel);
@@ -668,6 +679,7 @@
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(236, 24);
             this.txtCedula.TabIndex = 0;
+            this.txtCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedula_KeyPress);
             // 
             // txtEstadoCiv
             // 
@@ -707,6 +719,7 @@
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(238, 24);
             this.txtTel.TabIndex = 6;
+            this.txtTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // label8
             // 
@@ -1181,6 +1194,7 @@
             // 
             // splitContainer6.Panel2
             // 
+            this.splitContainer6.Panel2.Controls.Add(this.panel3);
             this.splitContainer6.Panel2.Controls.Add(this.txteditEstCiv);
             this.splitContainer6.Panel2.Controls.Add(this.label33);
             this.splitContainer6.Panel2.Controls.Add(this.txteditTel);
@@ -1278,6 +1292,7 @@
             this.txteditCedula.Name = "txteditCedula";
             this.txteditCedula.Size = new System.Drawing.Size(236, 24);
             this.txteditCedula.TabIndex = 0;
+            this.txteditCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txteditCedula_KeyPress);
             this.txteditCedula.Leave += new System.EventHandler(this.txteditCedula_Leave);
             // 
             // txteditEstCiv
@@ -1319,6 +1334,7 @@
             this.txteditTel.Name = "txteditTel";
             this.txteditTel.Size = new System.Drawing.Size(238, 24);
             this.txteditTel.TabIndex = 6;
+            this.txteditTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txteditTel_KeyPress);
             // 
             // label34
             // 
@@ -1359,10 +1375,94 @@
             this.label1.Location = new System.Drawing.Point(15, 10);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(110, 45);
+            this.label1.Size = new System.Drawing.Size(168, 45);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Médicos";
+            this.label1.Text = "Personal Médico";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Controls.Add(this.radioEditEnfermera);
+            this.panel3.Controls.Add(this.radioEditDoctor);
+            this.panel3.Location = new System.Drawing.Point(5, 119);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(339, 37);
+            this.panel3.TabIndex = 14;
+            // 
+            // radioEditDoctor
+            // 
+            this.radioEditDoctor.AutoSize = true;
+            this.radioEditDoctor.Location = new System.Drawing.Point(104, 13);
+            this.radioEditDoctor.Name = "radioEditDoctor";
+            this.radioEditDoctor.Size = new System.Drawing.Size(61, 19);
+            this.radioEditDoctor.TabIndex = 0;
+            this.radioEditDoctor.TabStop = true;
+            this.radioEditDoctor.Text = "Doctor";
+            this.radioEditDoctor.UseVisualStyleBackColor = true;
+            // 
+            // radioEditEnfermera
+            // 
+            this.radioEditEnfermera.AutoSize = true;
+            this.radioEditEnfermera.Location = new System.Drawing.Point(241, 13);
+            this.radioEditEnfermera.Name = "radioEditEnfermera";
+            this.radioEditEnfermera.Size = new System.Drawing.Size(83, 19);
+            this.radioEditEnfermera.TabIndex = 1;
+            this.radioEditEnfermera.TabStop = true;
+            this.radioEditEnfermera.Text = "Enfermera";
+            this.radioEditEnfermera.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(2, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 18);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Tipo:";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Controls.Add(this.rdEnfermera);
+            this.panel4.Controls.Add(this.rdDoctor);
+            this.panel4.Location = new System.Drawing.Point(8, 119);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(339, 37);
+            this.panel4.TabIndex = 15;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(2, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 18);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Tipo:";
+            // 
+            // rdEnfermera
+            // 
+            this.rdEnfermera.AutoSize = true;
+            this.rdEnfermera.Location = new System.Drawing.Point(241, 13);
+            this.rdEnfermera.Name = "rdEnfermera";
+            this.rdEnfermera.Size = new System.Drawing.Size(83, 19);
+            this.rdEnfermera.TabIndex = 1;
+            this.rdEnfermera.Text = "Enfermera";
+            this.rdEnfermera.UseVisualStyleBackColor = true;
+            // 
+            // rdDoctor
+            // 
+            this.rdDoctor.AutoSize = true;
+            this.rdDoctor.Checked = true;
+            this.rdDoctor.Location = new System.Drawing.Point(104, 13);
+            this.rdDoctor.Name = "rdDoctor";
+            this.rdDoctor.Size = new System.Drawing.Size(61, 19);
+            this.rdDoctor.TabIndex = 0;
+            this.rdDoctor.TabStop = true;
+            this.rdDoctor.Text = "Doctor";
+            this.rdDoctor.UseVisualStyleBackColor = true;
             // 
             // DoctorPanel
             // 
@@ -1419,6 +1519,10 @@
             this.splitContainer6.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer6)).EndInit();
             this.splitContainer6.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1510,5 +1614,13 @@
         public Bunifu.Framework.UI.BunifuThinButton2 btnUpdate;
         public Bunifu.Framework.UI.BunifuThinButton2 btnDelete;
         public Bunifu.Framework.UI.BunifuThinButton2 btnCancel;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.RadioButton radioEditEnfermera;
+        public System.Windows.Forms.RadioButton radioEditDoctor;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label10;
+        public System.Windows.Forms.RadioButton rdEnfermera;
+        public System.Windows.Forms.RadioButton rdDoctor;
     }
 }

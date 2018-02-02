@@ -60,6 +60,7 @@
             this.btnHistorial = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnReservaciones = new Bunifu.Framework.UI.BunifuFlatButton();
             this.PanelContainer = new System.Windows.Forms.Panel();
+            this.panelNotitify = new System.Windows.Forms.Panel();
             this.panelConsulta1 = new ProisProject.View.Panels.PanelConsulta();
             this.panelCitas1 = new ProisProject.View.Panels.PanelCitas();
             this.historialPanel1 = new ProisProject.View.Panels.HistorialPanel();
@@ -70,7 +71,6 @@
             this.searchPanel1 = new ProisProject.View.SearchPanel();
             this.specialityPanel1 = new ProisProject.View.SpecialityPanel();
             this.doctorPanel1 = new ProisProject.View.DoctorPanel();
-            this.panelNotitify = new System.Windows.Forms.Panel();
             this.nowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -350,7 +350,7 @@
             this.btnDoctores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.btnDoctores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDoctores.BorderRadius = 0;
-            this.btnDoctores.ButtonText = "     Médicos";
+            this.btnDoctores.ButtonText = "     Personal Médico";
             this.btnDoctores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuAnimator.SetDecoration(this.btnDoctores, BunifuAnimatorNS.DecorationType.None);
             this.btnDoctores.DisabledColor = System.Drawing.Color.Gray;
@@ -375,7 +375,7 @@
             this.btnDoctores.selected = false;
             this.btnDoctores.Size = new System.Drawing.Size(213, 48);
             this.btnDoctores.TabIndex = 1;
-            this.btnDoctores.Text = "     Médicos";
+            this.btnDoctores.Text = "     Personal Médico";
             this.btnDoctores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDoctores.Textcolor = System.Drawing.Color.White;
             this.btnDoctores.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -614,6 +614,17 @@
             this.PanelContainer.Size = new System.Drawing.Size(806, 685);
             this.PanelContainer.TabIndex = 2;
             // 
+            // panelNotitify
+            // 
+            this.panelNotitify.BackColor = System.Drawing.Color.White;
+            this.menuAnimator.SetDecoration(this.panelNotitify, BunifuAnimatorNS.DecorationType.None);
+            this.panelNotitify.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelNotitify.Location = new System.Drawing.Point(0, 650);
+            this.panelNotitify.Name = "panelNotitify";
+            this.panelNotitify.Size = new System.Drawing.Size(806, 35);
+            this.panelNotitify.TabIndex = 1;
+            this.panelNotitify.Visible = false;
+            // 
             // panelConsulta1
             // 
             this.panelConsulta1.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -689,6 +700,7 @@
             this.searchPanel1.PacientePanel = null;
             this.searchPanel1.Size = new System.Drawing.Size(806, 685);
             this.searchPanel1.TabIndex = 3;
+            this.searchPanel1.UserPanel = null;
             // 
             // specialityPanel1
             // 
@@ -709,17 +721,6 @@
             this.doctorPanel1.Name = "doctorPanel1";
             this.doctorPanel1.Size = new System.Drawing.Size(806, 685);
             this.doctorPanel1.TabIndex = 0;
-            // 
-            // panelNotitify
-            // 
-            this.panelNotitify.BackColor = System.Drawing.Color.White;
-            this.menuAnimator.SetDecoration(this.panelNotitify, BunifuAnimatorNS.DecorationType.None);
-            this.panelNotitify.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelNotitify.Location = new System.Drawing.Point(0, 650);
-            this.panelNotitify.Name = "panelNotitify";
-            this.panelNotitify.Size = new System.Drawing.Size(806, 35);
-            this.panelNotitify.TabIndex = 1;
-            this.panelNotitify.Visible = false;
             // 
             // nowToolStripMenuItem
             // 

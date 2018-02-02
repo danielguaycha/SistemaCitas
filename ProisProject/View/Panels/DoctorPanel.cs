@@ -95,6 +95,12 @@ namespace ProisProject.View
                 Notification.Show("Ingrese un numero de cedula valido", AlertType.warm);
                 return;
             }
+
+            if (mc.exist(txtCedula.Text)) {
+                Notification.Show("Ya existe una persona registrada con esta cédula", AlertType.warm);
+                return;
+            }
+
             Medico med = new Medico();
             med.Persona = new Persona();
 
@@ -110,8 +116,12 @@ namespace ProisProject.View
             med.Persona.fnac = (txtFNac.Text.Equals(""))?DateTime.Now:DateTime.Parse(txtFNac.Text);
             med.Persona.ecivil = txtEstadoCiv.Text;
             med.Persona.direccion = txtDireccion.Text;
-            med.Persona.tipo = 1;
-            
+            med.Persona.status = 1;
+            if (rdDoctor.Checked)
+                med.Persona.tipo = 1;
+            else if (rdEnfermera.Checked)
+                med.Persona.tipo = 2;
+            med.status = 1;
             med.titulo = txtTitulo.Text;
             med.id_especialidad = txtEspecialidad.SelectedIndex+1;
             
@@ -196,7 +206,7 @@ namespace ProisProject.View
                 {
                     mc.delete(int.Parse(selectedPerson+""));
                     Notification.Show("Registro Eliminado con exito", AlertType.ok, Notification.LOW);
-                    _clearRegisterInputs();
+                    _clearEditInputs();
                 }
             }
             else {
@@ -246,6 +256,10 @@ namespace ProisProject.View
             int id_especialidad = sc.getByName(txteditespecialidad.SelectedItem.ToString()).id_especialidad;
             med.titulo = txteditTitulo.Text;
             med.id_especialidad = id_especialidad;
+            if (radioEditDoctor.Checked)
+                med.Persona.tipo = 1;
+            else if (radioEditEnfermera.Checked)
+                med.Persona.tipo = 2;
             
             String validate = mc.validate(med);
             if (validate != "")
@@ -274,18 +288,18 @@ namespace ProisProject.View
 
         private void txteditEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
             
         }
 
         private void txteditPeso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
 
         private void txteditAltura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
 
         private void txteditNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -320,17 +334,37 @@ namespace ProisProject.View
 
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
 
         private void txtPeso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
 
         private void txtTalla_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
+        }
+
+        private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilController.validarNumeros(e);
+        }
+
+        private void txtCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilController.validarNumeros(e);
+        }
+
+        private void txteditCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilController.validarNumeros(e);
+        }
+
+        private void txteditTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilController.validarNumeros(e);
         }
     }
 }

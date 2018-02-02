@@ -41,9 +41,11 @@ namespace ProisProject.Controller
                 med.Persona.fnac = medico.Persona.fnac;
                 med.Persona.ecivil = medico.Persona.ecivil;
                 med.Persona.direccion = medico.Persona.direccion;
+                med.Persona.tipo = medico.Persona.tipo;
+                    med.titulo = medico.titulo;
+                    med.id_especialidad = medico.id_especialidad;
 
-                med.titulo = medico.titulo;
-                med.id_especialidad = medico.id_especialidad;
+              
                 post.SubmitChanges();
             }
         }
@@ -56,7 +58,8 @@ namespace ProisProject.Controller
                 post.Usuario.DeleteOnSubmit(deleteuser);
                 post.SubmitChanges();
             }
-            med.status = 0;           
+            med.status = 0;
+            med.Persona.status = 0;
             post.SubmitChanges();
         }
 
@@ -64,17 +67,26 @@ namespace ProisProject.Controller
             Medico med = null;
             if (exist(dni))
             {
-                med = post.Medico.Where(c => c.Persona.dni == dni).Single();
+                med = post.Medico.Where(c => c.Persona.dni == dni && c.Persona.status>0
+                                             && c.status >0).Single();
             }
             return med;
         }
 
         public bool exist(String dni) {
-            return (from item in post.Medico where item.Persona.dni == dni
+            return (from item in post.Medico where item.status >0
+                    && item.Persona.status >0
+                    && item.Persona.dni == dni
                            select item).Count() > 0;
         }
 
         public string validate(Medico m) {
+            if (m.Persona.telefono == "") {
+                return "El número de telefono es un dato requerido";
+            }
+            if (!(m.id_especialidad > 0)) {
+                return "La especialidad Seleccionada no es valida";
+            }
             if (m.Persona.nombre.Equals("") || m.Persona.apellido =="") {
                 return "El nombre y apellido del médico son datos requeridos";
             }
@@ -84,8 +96,14 @@ namespace ProisProject.Controller
             if (m.Persona.edad < 0 || m.Persona.edad == null) {
                 return "Es necesario Especificar una edad mayor a 0";
             }
-            if (m.Persona.email == "") {
-                return "El mail del ";
+            if (m.Persona.email !="") {
+                if (!UtilController.IsValidEmail(m.Persona.email))
+                {
+                    return "El mail proporcionado no es válido";
+                }
+            }
+            else{
+                return "Es obligatorio para el personal médico registrar un email";
             }
             return "";
         }

@@ -152,12 +152,12 @@ namespace ProisProject.View
 
         private void txtTel_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
 
         private void txtedad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
 
         private void txteditNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -172,7 +172,7 @@ namespace ProisProject.View
 
         private void txtEditEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -209,7 +209,7 @@ namespace ProisProject.View
 
         private void txteditTel_KeyPress(object sender, KeyPressEventArgs e)
         {
-            UtilController.validaNumeros(e);
+            UtilController.validaNumerosDecimales(e);
         }
     }
 }

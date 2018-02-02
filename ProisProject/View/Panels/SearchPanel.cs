@@ -66,7 +66,8 @@ namespace ProisProject.View
                 datatableSearch.Columns.Add("Telefono");
 
                 var q = from medicos in post.Medico
-                        where medicos.Especialidad.status == 1 && (medicos.Persona.nombre.Contains(data)
+                        where medicos.status>0 && medicos.Persona.status>0
+                        && medicos.Especialidad.status == 1 && (medicos.Persona.nombre.Contains(data)
                         || medicos.Persona.dni.Contains(data)
                         || medicos.Especialidad.nombre.Contains(data)
                         || medicos.Persona.apellido.Contains(data))
@@ -253,6 +254,13 @@ namespace ProisProject.View
                 DoctorPanel.txteditDiscapacidad.Text = "Ninguna";
                 DoctorPanel.txteditTitulo.Text = listaMedicos[tbSearch.CurrentRow.Index].titulo;
                 DoctorPanel.txteditespecialidad.SelectedItem = sc.getById(listaMedicos[tbSearch.CurrentRow.Index].id_especialidad.Value).nombre;
+                if (listaMedicos[tbSearch.CurrentRow.Index].Persona.tipo == 1) {
+                    DoctorPanel.radioEditDoctor.Checked = true;
+                    DoctorPanel.radioEditEnfermera.Checked = false;
+                } else if (listaMedicos[tbSearch.CurrentRow.Index].Persona.tipo == 2) {
+                    DoctorPanel.radioEditEnfermera.Checked = true;
+                    DoctorPanel.radioEditDoctor.Checked = false;
+                }
                 DoctorPanel.btnCancel.Show();
                 DoctorPanel.btnUpdate.Show();
                 DoctorPanel.btnDelete.Show();

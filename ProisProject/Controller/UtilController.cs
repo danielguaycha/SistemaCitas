@@ -124,7 +124,7 @@ namespace ProisProject.Controller
             }
         }
 
-        public static void validaNumeros(KeyPressEventArgs e)
+        public static void validaNumerosDecimales(KeyPressEventArgs e)
         {
             CultureInfo cc = System.Threading.Thread.CurrentThread.CurrentCulture;
             if (char.IsNumber(e.KeyChar) || e.KeyChar.ToString() == cc.NumberFormat.NumberDecimalSeparator
@@ -136,6 +136,14 @@ namespace ProisProject.Controller
             else
             {
                 e.Handled = true;
+            }
+        }
+
+        public static void validarNumeros(KeyPressEventArgs e) {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+                return;
             }
         }
 
