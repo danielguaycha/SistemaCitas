@@ -35,3 +35,4 @@ C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\Prois
 C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.Panels.HistorialPanel.resources
 C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.Panels.PanelCitas.resources
 C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.Panels.PanelConsulta.resources
+C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.FrmLogin.resources

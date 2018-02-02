@@ -39,7 +39,7 @@ namespace ProisProject
 
         private void btnClose(object sender, EventArgs e)
         {
-            this.Close();
+            Environment.Exit(1);
         }
 
         private void btnDoctores_Click(object sender, EventArgs e)

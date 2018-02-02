@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProisProject.View;
 
 namespace ProisProject
 {
@@ -18,7 +19,7 @@ namespace ProisProject
            // perm.init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Index());
+            Application.Run(new FrmLogin());
         }
     }
 }
