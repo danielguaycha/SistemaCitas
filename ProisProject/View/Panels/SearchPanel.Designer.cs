@@ -107,7 +107,6 @@
             this.rdCitas.Name = "rdCitas";
             this.rdCitas.Size = new System.Drawing.Size(56, 20);
             this.rdCitas.TabIndex = 2;
-            this.rdCitas.TabStop = true;
             this.rdCitas.Text = "Citas";
             this.rdCitas.UseVisualStyleBackColor = true;
             this.rdCitas.CheckedChanged += new System.EventHandler(this.rdCitas_CheckedChanged);
@@ -116,6 +115,7 @@
             // 
             this.rdPacientes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.rdPacientes.AutoSize = true;
+            this.rdPacientes.Checked = true;
             this.rdPacientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdPacientes.Location = new System.Drawing.Point(209, 15);
             this.rdPacientes.Name = "rdPacientes";
@@ -129,13 +129,11 @@
             // rdMedicos
             // 
             this.rdMedicos.AutoSize = true;
-            this.rdMedicos.Checked = true;
             this.rdMedicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdMedicos.Location = new System.Drawing.Point(34, 15);
             this.rdMedicos.Name = "rdMedicos";
             this.rdMedicos.Size = new System.Drawing.Size(78, 20);
             this.rdMedicos.TabIndex = 0;
-            this.rdMedicos.TabStop = true;
             this.rdMedicos.Text = "Médicos";
             this.rdMedicos.UseVisualStyleBackColor = true;
             this.rdMedicos.Click += new System.EventHandler(this.rdMedicos_Click);

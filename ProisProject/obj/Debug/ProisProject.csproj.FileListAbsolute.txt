@@ -36,3 +36,8 @@ C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\Prois
 C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.Panels.PanelCitas.resources
 C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.Panels.PanelConsulta.resources
 C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.FrmLogin.resources
+C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.FrmViewHistorial.resources
+C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\bin\Debug\FlashControlV71.dll
+C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\bin\Debug\ShockwaveFlashObjects.dll
+C:\Users\Daniel Guaycha\documents\visual studio 2015\Projects\ProisProject\ProisProject\obj\Debug\ProisProject.View.FrmRptPacientes.resources

@@ -27,7 +27,7 @@ namespace ProisProject.Controller
         }
 
         public Persona getIdByCedula(String cedula) {
-            Persona p = db.Persona.Where(u => u.dni == cedula).Single();
+            Persona p = db.Persona.Where(u =>u.status==1 && u.dni == cedula).Single();
             return p;
         }
 

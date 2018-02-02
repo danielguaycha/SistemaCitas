@@ -42,11 +42,16 @@
             this.cerrarSessiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.especialidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuRegistros = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubmenuEspecialidades = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubmenuUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubmenuRoles = new System.Windows.Forms.ToolStripMenuItem();
+            this.SubmenuLogs = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medicosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.citasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bunifuImageButton2 = new Bunifu.Framework.UI.BunifuImageButton();
             this.SideBarMenu = new System.Windows.Forms.Panel();
             this.SlidePanel = new System.Windows.Forms.Panel();
@@ -166,7 +171,8 @@
             this.horizontalMenu.GripMargin = new System.Windows.Forms.Padding(15, 2, 0, 2);
             this.horizontalMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cMSystemToolStripMenuItem,
-            this.registrosToolStripMenuItem});
+            this.MenuRegistros,
+            this.reportesToolStripMenuItem});
             this.horizontalMenu.Location = new System.Drawing.Point(0, 0);
             this.horizontalMenu.Margin = new System.Windows.Forms.Padding(10, 0, 0, 10);
             this.horizontalMenu.Name = "horizontalMenu";
@@ -221,44 +227,81 @@
             this.acercaDeToolStripMenuItem1.Size = new System.Drawing.Size(183, 22);
             this.acercaDeToolStripMenuItem1.Text = "Acerca de";
             // 
-            // registrosToolStripMenuItem
+            // MenuRegistros
             // 
-            this.registrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.especialidadesToolStripMenuItem,
-            this.usuariosToolStripMenuItem,
-            this.rolesToolStripMenuItem,
-            this.logsToolStripMenuItem});
-            this.registrosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.registrosToolStripMenuItem.Name = "registrosToolStripMenuItem";
-            this.registrosToolStripMenuItem.Size = new System.Drawing.Size(67, 26);
-            this.registrosToolStripMenuItem.Text = "Registros";
+            this.MenuRegistros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SubmenuEspecialidades,
+            this.SubmenuUsuarios,
+            this.SubmenuRoles,
+            this.SubmenuLogs});
+            this.MenuRegistros.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuRegistros.Name = "MenuRegistros";
+            this.MenuRegistros.Size = new System.Drawing.Size(67, 26);
+            this.MenuRegistros.Text = "Registros";
             // 
-            // especialidadesToolStripMenuItem
+            // SubmenuEspecialidades
             // 
-            this.especialidadesToolStripMenuItem.Name = "especialidadesToolStripMenuItem";
-            this.especialidadesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.especialidadesToolStripMenuItem.Text = "Especialidades";
-            this.especialidadesToolStripMenuItem.Click += new System.EventHandler(this.especialidadesToolStripMenuItem_Click);
+            this.SubmenuEspecialidades.Name = "SubmenuEspecialidades";
+            this.SubmenuEspecialidades.Size = new System.Drawing.Size(150, 22);
+            this.SubmenuEspecialidades.Text = "Especialidades";
+            this.SubmenuEspecialidades.Click += new System.EventHandler(this.especialidadesToolStripMenuItem_Click);
             // 
-            // usuariosToolStripMenuItem
+            // SubmenuUsuarios
             // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
+            this.SubmenuUsuarios.Name = "SubmenuUsuarios";
+            this.SubmenuUsuarios.Size = new System.Drawing.Size(150, 22);
+            this.SubmenuUsuarios.Text = "Usuarios";
+            this.SubmenuUsuarios.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
-            // rolesToolStripMenuItem
+            // SubmenuRoles
             // 
-            this.rolesToolStripMenuItem.Name = "rolesToolStripMenuItem";
-            this.rolesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.rolesToolStripMenuItem.Text = "Roles";
-            this.rolesToolStripMenuItem.Click += new System.EventHandler(this.rolesToolStripMenuItem_Click);
+            this.SubmenuRoles.Name = "SubmenuRoles";
+            this.SubmenuRoles.Size = new System.Drawing.Size(150, 22);
+            this.SubmenuRoles.Text = "Roles";
+            this.SubmenuRoles.Click += new System.EventHandler(this.rolesToolStripMenuItem_Click);
             // 
-            // logsToolStripMenuItem
+            // SubmenuLogs
             // 
-            this.logsToolStripMenuItem.Name = "logsToolStripMenuItem";
-            this.logsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.logsToolStripMenuItem.Text = "Logs";
+            this.SubmenuLogs.Name = "SubmenuLogs";
+            this.SubmenuLogs.Size = new System.Drawing.Size(150, 22);
+            this.SubmenuLogs.Text = "Logs";
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pacientesToolStripMenuItem,
+            this.medicosToolStripMenuItem,
+            this.facturasToolStripMenuItem,
+            this.citasToolStripMenuItem});
+            this.reportesToolStripMenuItem.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 26);
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // pacientesToolStripMenuItem
+            // 
+            this.pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
+            this.pacientesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pacientesToolStripMenuItem.Text = "Pacientes";
+            this.pacientesToolStripMenuItem.Click += new System.EventHandler(this.pacientesToolStripMenuItem_Click);
+            // 
+            // medicosToolStripMenuItem
+            // 
+            this.medicosToolStripMenuItem.Name = "medicosToolStripMenuItem";
+            this.medicosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.medicosToolStripMenuItem.Text = "Medicos";
+            // 
+            // facturasToolStripMenuItem
+            // 
+            this.facturasToolStripMenuItem.Name = "facturasToolStripMenuItem";
+            this.facturasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.facturasToolStripMenuItem.Text = "Facturas";
+            // 
+            // citasToolStripMenuItem
+            // 
+            this.citasToolStripMenuItem.Name = "citasToolStripMenuItem";
+            this.citasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.citasToolStripMenuItem.Text = "Citas";
             // 
             // bunifuImageButton2
             // 
@@ -367,7 +410,7 @@
             this.btnDoctores.IconVisible = true;
             this.btnDoctores.IconZoom = 80D;
             this.btnDoctores.IsTab = false;
-            this.btnDoctores.Location = new System.Drawing.Point(0, 204);
+            this.btnDoctores.Location = new System.Drawing.Point(2, 360);
             this.btnDoctores.Name = "btnDoctores";
             this.btnDoctores.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.btnDoctores.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
@@ -505,7 +548,7 @@
             this.btnPacientes.IconVisible = true;
             this.btnPacientes.IconZoom = 80D;
             this.btnPacientes.IsTab = false;
-            this.btnPacientes.Location = new System.Drawing.Point(0, 258);
+            this.btnPacientes.Location = new System.Drawing.Point(2, 252);
             this.btnPacientes.Name = "btnPacientes";
             this.btnPacientes.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.btnPacientes.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
@@ -542,7 +585,7 @@
             this.btnHistorial.IconVisible = true;
             this.btnHistorial.IconZoom = 80D;
             this.btnHistorial.IsTab = false;
-            this.btnHistorial.Location = new System.Drawing.Point(0, 312);
+            this.btnHistorial.Location = new System.Drawing.Point(2, 205);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.btnHistorial.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
@@ -580,7 +623,7 @@
             this.btnReservaciones.IconVisible = true;
             this.btnReservaciones.IconZoom = 80D;
             this.btnReservaciones.IsTab = false;
-            this.btnReservaciones.Location = new System.Drawing.Point(3, 366);
+            this.btnReservaciones.Location = new System.Drawing.Point(2, 306);
             this.btnReservaciones.Name = "btnReservaciones";
             this.btnReservaciones.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.btnReservaciones.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(30)))), ((int)(((byte)(34)))));
@@ -846,22 +889,27 @@
         private Bunifu.Framework.UI.BunifuImageButton maximizeButton;
         private BunifuAnimatorNS.BunifuTransition menuAnimator;
         private System.Windows.Forms.Panel panelNotitify;
-        private System.Windows.Forms.ToolStripMenuItem registrosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem especialidadesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MenuRegistros;
+        private System.Windows.Forms.ToolStripMenuItem SubmenuEspecialidades;
         private View.SpecialityPanel specialityPanel1;
         private Bunifu.Framework.UI.BunifuDragControl dragWindows;
-        private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SubmenuLogs;
         private View.SearchPanel searchPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private View.Panels.HomePanel homePanel1;
         private View.PacientePanel pacientePanel1;
-        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SubmenuUsuarios;
         private View.Panels.UserPanel panelUsuario1;
         private View.Panels.RolPanel rolPanel1;
-        private System.Windows.Forms.ToolStripMenuItem rolesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SubmenuRoles;
         private View.Panels.HistorialPanel historialPanel1;
         private View.Panels.PanelCitas panelCitas1;
         private View.Panels.PanelConsulta panelConsulta1;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pacientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem medicosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem facturasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem citasToolStripMenuItem;
     }
 }
 

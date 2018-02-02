@@ -34,7 +34,7 @@ namespace ProisProject.Controller
         }
 
         public bool exist(string value) {
-            return (from p in perms where p.valor == value select p).Count()>0;
+            return (from p in perms where p.valor == value select p).Count() > 0;
         }
 
         private void _medicPerm() {
@@ -71,7 +71,7 @@ namespace ProisProject.Controller
                 db.SubmitChanges();
             }
             catch (Exception ex) {
-                Console.WriteLine("Error instalando Permisos {Medicos}"+ex.Message);
+                Console.WriteLine("Error instalando Permisos {Medicos}" + ex.Message);
                 _medicPerm();
             }
         }
@@ -110,7 +110,7 @@ namespace ProisProject.Controller
                 db.SubmitChanges();
             }
             catch (Exception ex) {
-                Console.WriteLine("Error instalando Permisos {Pacientes}"+ex.Message);
+                Console.WriteLine("Error instalando Permisos {Pacientes}" + ex.Message);
                 _pacPerm();
             }
         }
@@ -223,6 +223,61 @@ namespace ProisProject.Controller
                     db.Permisos.InsertOnSubmit(d1);
                 }
 
+                if (!this.exist(PermType.MEDIC_ALL.ToString()))
+                {
+                    Permisos d1 = new Permisos();
+                    d1.descripcion = "Módula de Médicos";
+                    d1.valor = PermType.MEDIC_ALL.ToString();
+                    db.Permisos.InsertOnSubmit(d1);
+                }
+
+                if (!this.exist(PermType.CITAS_ALL.ToString()))
+                {
+                    Permisos d1 = new Permisos();
+                    d1.descripcion = "Módulo de Citas";
+                    d1.valor = PermType.CITAS_ALL.ToString();
+                    db.Permisos.InsertOnSubmit(d1);
+                }
+
+                if (!this.exist(PermType.PACIENTE_ALL.ToString()))
+                {
+                    Permisos d1 = new Permisos();
+                    d1.descripcion = "Módulo de Pacientes";
+                    d1.valor = PermType.PACIENTE_ALL.ToString();
+                    db.Permisos.InsertOnSubmit(d1);
+                }
+
+                if (!this.exist(PermType.USER_ALL.ToString()))
+                {
+                    Permisos d1 = new Permisos();
+                    d1.descripcion = "Módulo de Usuarios";
+                    d1.valor = PermType.USER_ALL.ToString();
+                    db.Permisos.InsertOnSubmit(d1);
+                }
+
+                if (!this.exist(PermType.CONSULTA_ALL.ToString()))
+                {
+                    Permisos d1 = new Permisos();
+                    d1.descripcion = "Módulo de Consultas";
+                    d1.valor = PermType.CONSULTA_ALL.ToString();
+                    db.Permisos.InsertOnSubmit(d1);
+                }
+
+                if (!this.exist(PermType.ROLL_ALL.ToString()))
+                {
+                    Permisos d1 = new Permisos();
+                    d1.descripcion = "Módulo de Roles";
+                    d1.valor = PermType.ROLL_ALL.ToString();
+                    db.Permisos.InsertOnSubmit(d1);
+                }
+
+                if (!this.exist(PermType.ESPECIALIDAD_ALL.ToString()))
+                {
+                    Permisos d1 = new Permisos();
+                    d1.descripcion = "Módulo de Especialidades";
+                    d1.valor = PermType.ESPECIALIDAD_ALL.ToString();
+                    db.Permisos.InsertOnSubmit(d1);
+                }
                 db.SubmitChanges();
             }
             catch (Exception ex)
@@ -230,6 +285,15 @@ namespace ProisProject.Controller
                 Console.WriteLine("Error instalando Permisos {Otros}" + ex.Message);
                 _othersPerm();
             }
+        }
+
+        public bool havePerm(int id_rol, PermType perm) {
+            return (from rp in db.Rol_Permiso where rp.id_rol == id_rol && rp.Permisos.valor == perm.ToString() select rp).Count() > 0;
+        }
+
+        public int getIdByPerm(PermType perm) {
+            Permisos p = db.Permisos.Where(pe => pe.valor == perm.ToString()).Single();
+            return p.id_permiso;
         }
     }
 
@@ -239,6 +303,9 @@ namespace ProisProject.Controller
         USER_STORE, USER_UPDATE, USER_DELETE, USER_VIEW,
         CITA_STORE, CITA_UPDATE, CITA_DELETE, CITA_VIEW, 
         CONSULTA_STORE, CONSULTA_UPDATE, CONSULTA_DELETE, CONSULTA_VIEW,
-        REPORT_VIEW, LOG_VIEW, HISTORIAL_VIEW
+        REPORT_VIEW, LOG_VIEW, HISTORIAL_VIEW,
+        MEDIC_ALL, PACIENTE_ALL, CITAS_ALL, USER_ALL, CONSULTA_ALL, ROLL_ALL,
+        ESPECIALIDAD_ALL 
+
     }
 }

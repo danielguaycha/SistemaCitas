@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ProisProject.Model;
+using ProisProject.Controller;
 namespace ProisProject
 {
    
@@ -18,9 +19,54 @@ namespace ProisProject
         public static Panel PANELNOTIFY;
         public static Label TEXTNOTIFY;
         public static Label ICONOTIFY;
+        PermControlller pc = new PermControlller();
         public Index()
         {
             InitializeComponent();
+            if (Session.user != null && Session.user.id_usuario > 0) {
+                // botones generales
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.CITAS_ALL)) {
+                    btnReservaciones.Hide();
+                    searchPanel1.rdCitas.Hide();
+                }
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.MEDIC_ALL))
+                {
+                    btnDoctores.Hide();
+                    searchPanel1.rdMedicos.Hide();
+                }
+
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.PACIENTE_ALL))
+                {
+                    btnPacientes.Hide();
+                }
+
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.CONSULTA_ALL))
+                {
+                    btnConsultas.Hide();
+                }
+
+                // submenus
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.USER_ALL))
+                {
+                    SubmenuUsuarios.Dispose() ;
+                }
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.ROLL_ALL))
+                {
+                    SubmenuRoles.Dispose();
+                }
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.LOG_VIEW))
+                {
+                    SubmenuLogs.Dispose();
+                }
+                if (!pc.havePerm(Session.user.id_rol.Value, PermType.ESPECIALIDAD_ALL))
+                {
+                    SubmenuEspecialidades.Dispose();
+                }
+
+                // botoneras
+                
+            }
+
             doctorPanel1.Width = PanelContainer.Width;
             doctorPanel1.BringToFront();
             horizontalMenu.Renderer = new MyRenderer();
@@ -39,14 +85,9 @@ namespace ProisProject
 
         private void btnClose(object sender, EventArgs e)
         {
-            try
-            {
-                Environment.Exit(1);
-            }
-            catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                this.Close();
-            }
+  
+                this.Dispose();
+            
         }
 
         private void btnDoctores_Click(object sender, EventArgs e)
@@ -158,6 +199,12 @@ namespace ProisProject
         private void rolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rolPanel1.BringToFront();
+        }
+
+        private void pacientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            View.FrmRptPacientes fm = new View.FrmRptPacientes();
+            fm.Show();
         }
     }
 

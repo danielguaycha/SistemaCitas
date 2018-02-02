@@ -95,6 +95,7 @@ namespace ProisProject.View.Panels
             txtSearch.Text = "";
             txtRol.SelectedIndex = 0;
             txtCedula.Text = "";
+            UserPanel_Load(null, null);
         }
 
         private void UserPanel_Load(object sender, EventArgs e)
@@ -156,6 +157,7 @@ namespace ProisProject.View.Panels
             btnUpdate.Hide();
             btnDelete.Hide();
             btnCancel.Hide();
+            UserPanel_Load(null, null);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
