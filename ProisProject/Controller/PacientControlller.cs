@@ -20,14 +20,17 @@ namespace ProisProject.Controller
         }
 
         public void delete(String oldni) {
-            Persona p = db.Persona.Where(per => per.dni == oldni).Single();
+            Persona p = db.Persona.Where(per =>per.status==1 && per.tipo==3 && per.dni == oldni).Single();
             p.status = 0;
             db.SubmitChanges();
         }
 
         public Boolean exist(String cedula) {
             return (from item in db.Persona
-                    where item.dni == cedula
+                    where
+                        item.tipo == 3 &&
+                        item.dni == cedula &&
+                        item.status == 1
                     select item).Count() > 0;
         }
         public string validate(Persona per)
@@ -41,13 +44,13 @@ namespace ProisProject.Controller
 
         public Persona Get(string cedula) {
             Persona per = null;
-            per = db.Persona.Where(c => c.dni == cedula).Single();
+            per = db.Persona.Where(c => c.dni == cedula && c.status==1 && c.tipo == 3).Single();
             return per;
         }
 
         internal void update(string oldDni, Persona per)
         {
-            Persona temp = db.Persona.Where(p => p.dni == oldDni).Single();
+            Persona temp = db.Persona.Where(p => p.status==1 && p.tipo==3 && p.dni == oldDni).Single();
             temp.dni = per.dni;
             temp.nombre = per.nombre;
             temp.apellido = per.apellido;

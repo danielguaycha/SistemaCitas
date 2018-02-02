@@ -67,6 +67,7 @@ namespace ProisProject.View
             per.telefono = txtTel.Text;
             per.dni = txtCedula.Text;
             per.direccion = txtDireccion.Text;
+            per.status = 1;
             per.tipo = 3; // paciente
             string validate = pc.validate(per);
             if (validate == "")

@@ -74,7 +74,9 @@ namespace ProisProject.View.Panels
         }
         public void SearchActionNormal(String data)
         {
+            lblAviso.Text = "";
             datatableSearch = new DataTable();
+            datatableSearch.Columns.Add("Fecha");
             datatableSearch.Columns.Add("Cedula");
             datatableSearch.Columns.Add("Médico");
             datatableSearch.Columns.Add("Paciente");
@@ -82,7 +84,7 @@ namespace ProisProject.View.Panels
             datatableSearch.Columns.Add("Estado");
 
             var q = from c in post.Cita
-                    where c.status !=3 && (c.fecha.ToString().Contains(data) ||
+                    where c.status ==1 && (c.fecha.ToString().Contains(data) ||
                     c.Persona.dni.Contains(data) ||
                     c.Persona.apellido.Contains(data) ||
                     c.Persona.nombre.Contains(data))
@@ -103,21 +105,19 @@ namespace ProisProject.View.Panels
                     string estado = "";
                     switch (p.status) {
                         case 0:
-                            estado = "PENDIENTE DE ATENCIÓN & PAGO";
+                            estado = "PENDIENTE";
                             break;
                         case 1:
-                            estado = "PENDIENTE DE ATENCIÓN - PAGADA";
+                            estado = "PAGADA";
                             break;
                         case 2:
-                            estado = "ATENDIDA & PENDIENTE DE PAGO";
-                            break;
-                        case 3:
-                            estado = "ATENDIDA & COBRADA";
+                            estado = "ATENDIDA";
                             break;
                     }
                     listaCitas.Add(p);
                     datatableSearch.Rows.Add(new Object[]
                     {
+                            p.fecha.Value.ToString("dd/MM/yyyy"),
                             p.Persona.dni,
                             p.Medico.Persona.nombre+" "+p.Medico.Persona.apellido,
                             p.Persona.nombre+" "+p.Persona.apellido,
@@ -145,7 +145,7 @@ namespace ProisProject.View.Panels
             datatableSearch.Columns.Add("Estado");
 
             var q = from c in post.Cita
-                    where c.status == 3 && (c.fecha.ToString().Contains(data) ||
+                    where c.status == 2 && (c.fecha.ToString().Contains(data) ||
                     c.Persona.dni.Contains(data) ||
                     c.Persona.apellido.Contains(data) ||
                     c.Persona.nombre.Contains(data))
@@ -168,16 +168,13 @@ namespace ProisProject.View.Panels
                     switch (p.status)
                     {
                         case 0:
-                            estado = "PENDIENTE DE ATENCIÓN & PAGO";
+                            estado = "PENDIENTE";
                             break;
                         case 1:
-                            estado = "PENDIENTE DE ATENCIÓN - PAGADA";
+                            estado = "PAGADA";
                             break;
                         case 2:
-                            estado = "ATENDIDA & PENDIENTE DE PAGO";
-                            break;
-                        case 3:
-                            estado = "ATENDIDA & COBRADA";
+                            estado = "ATENDIDA";
                             break;
                     }
                     listEditCitas.Add(p);
@@ -195,7 +192,7 @@ namespace ProisProject.View.Panels
             else
             {
                 lblAviso.ForeColor = Color.Red;
-                lblAviso.Text = "No hemos encontrado coincidencias con tu busqueda";
+               // lblAviso.Text = "No hemos encontrado coincidencias con tu busqueda";
             }
             tbAtentCitas.DataSource = datatableSearch;
         }
@@ -209,7 +206,11 @@ namespace ProisProject.View.Panels
             cita = listaCitas[tbSearchCita.CurrentRow.Index];
             if (cita != null)
             {
-                Persona p = pc.Get(tbSearchCita.CurrentRow.Cells[0].Value.ToString());
+                if (DateTime.Parse(cita.fecha.Value.ToString("dd/MM/yyy")) != DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy"))) {
+                    Notification.Show("La cita debe ser atendida en la fecha espeficada", AlertType.warm);
+                    return;
+                }
+                Persona p = pc.Get(tbSearchCita.CurrentRow.Cells[1].Value.ToString());
                 selectPaciente = p.id_person;
                 txtCedula.Text = p.dni;
                 txtNombre.Text = p.nombre + " " + p.apellido;
@@ -227,12 +228,11 @@ namespace ProisProject.View.Panels
             c.medicacion = txtMedicacion.Text;
             c.diagnostico = txtDiagnostico.Text;
             c.prescripcion = txtPrescripcion.Text;
-
             String validate = cc.validate(c);
             if (validate == "")
             {
                 cc.store(c);
-                ctc.confirm(cita.id_cita, 3);
+                ctc.confirm(cita.id_cita, 2);
                 _clearRegisterInputs();
                 Notification.Show("La consulta se realizó con exito", AlertType.ok);
                 c = null;
@@ -277,7 +277,7 @@ namespace ProisProject.View.Panels
             c.medicacion = txtEditMedicacion.Text;
             c.diagnostico = txtEditDiagnostico.Text;
             c.prescripcion = txtEditDescripcion.Text;
-
+            
             String validate  = cc.validate(c);
             if (validate == "")
             {

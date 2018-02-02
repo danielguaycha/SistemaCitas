@@ -48,6 +48,7 @@ namespace ProisProject.View.Panels
             txteRetencion.Text = "0";
             textPendientePago.Checked = false;
             txteFecha.Text = "";
+            loadFacturas("");
         }
 
         public void _clearRegisterInputs()
@@ -65,9 +66,12 @@ namespace ProisProject.View.Panels
             txtRetencion.Text = "0";
             txtPendientePAgo.Checked = false;
             txtFecha.Text = "";
+            loadFacturas("");
         }
 
         public void loadFacturas(String dato) {
+            db = null;
+            db = new PostDataContext();
             dt = new DataTable();
             
             dt.Columns.Add("Fecha");
@@ -77,15 +81,27 @@ namespace ProisProject.View.Panels
             dt.Columns.Add("Retención");
             dt.Columns.Add("Valor Neto");
             dt.Columns.Add("Total");
-            var q = from fac in db.Cita where 
+            var q = from fac in db.Cita where fac.status>=0 &&(
                     fac.Persona.dni.Contains(dato) || 
-                    fac.Persona.nombre.Contains(dato) select fac;
+                    fac.Persona.nombre.Contains(dato)) select fac;
 
             foreach (Cita c in q) {
+                string estado = "";
+                switch (c.status)
+                {
+                    case 0:
+                        estado = "PENDIENTE PAGO";
+                        break;
+                    case 1:
+                        estado = "PAGADA";
+                        break;
+                    case 2:
+                        estado = "ATENDIDA";
+                        break;
+                }
                 dt.Rows.Add(new Object[] { c.fecha.Value.ToString("dd/MM/yyyy")
                     , c.Persona.nombre +" "+c.Persona.apellido,
-                    (c.status == 1 || c.status==3)?"PAGADO":"PENDIENTE",
-                    c.Medico.Persona.nombre + " "+c.Medico.Persona.apellido,
+                    c.Medico.Persona.nombre + " "+c.Medico.Persona.apellido,estado,
                     UtilController.f(c.retencion.Value), UtilController.f(c.precio.Value), UtilController.f(c.precio.Value - ((c.precio*c.retencion)/100).Value)
 
                 });
@@ -148,16 +164,26 @@ namespace ProisProject.View.Panels
                 Notification.Show("Cedula del paciente no valida.", AlertType.warm);
                 return;
             }
-
+            
 
             //Registro del Paciente en caso de no existir
-
             Persona p = new Persona();
             p.dni = txtCedulaPac.Text;
             p.nombre = txtNombrePac.Text;
             p.apellido = txtApellidosPac.Text;
             p.telefono = txtTelPac.Text;
-            p.edad = int.Parse(txtEdadPac.Text);
+            try
+            {
+                p.edad = int.Parse(txtEdadPac.Text);
+                if (p.edad < 0) {
+                    Notification.Show("La edad no puede ser menor a 0",AlertType.warm);
+                    return;
+                }
+            }
+            catch {
+                Notification.Show("Asegurese de que la edad sea un valor valido", AlertType.warm);
+                return;
+            }
             p.tipo = 3;
 
             string valid = pc.validate(p);
@@ -184,8 +210,26 @@ namespace ProisProject.View.Panels
             c.id_medico = id_medic;
             c.id_person = id_pacient;
             c.fecha = DateTime.Parse(txtFecha.Text);
-            c.precio = decimal.Parse(txtCosto.Text);
-            c.retencion = decimal.Parse(txtRetencion.Text);
+            try
+            {
+                c.precio = decimal.Parse(txtCosto.Text);
+                c.retencion = decimal.Parse(txtRetencion.Text);
+
+                if (c.precio < 0) {
+                    Notification.Show("El precio de la consulta no puede ser menor a 0", AlertType.warm);
+                    return;
+                }
+                if(c.retencion<0 || c.retencion > 100)
+                {
+                    Notification.Show("La retención en un valor porcentual entre 0 y 100", AlertType.warm);
+                    return;
+                }
+            }
+            catch {
+                Notification.Show("Asegurese de ingresar valores validos para precio y retención", AlertType.warm);
+                return;
+            }
+            // 0 No pagada, 1 pagada, 2 atendida
             c.status = (txtPendientePAgo.Checked) ? 0 : 1;
 
             String validate = cc.validate(c);
@@ -217,14 +261,31 @@ namespace ProisProject.View.Panels
         {
             if (id_cita > 0)
             {
+                if (txteCosto.Text == "")
+                {
+                    Notification.Show("El valor a cobrar por la consulta es requerido", AlertType.ok);
+                    return;
+                }
+                if (txteFecha.Text == "")
+                {
+                    Notification.Show("Necesitas especificar una fecha", AlertType.warm);
+                    return;
+                }
                 Cita c = new Cita();
                 c.id_medico = id_medic;
                 c.id_person = id_pacient;
                 c.fecha = DateTime.Parse(txteFecha.Text);
-                c.precio = decimal.Parse(txteCosto.Text);
-                c.retencion = decimal.Parse(txteRetencion.Text);
+                try
+                {
+                    c.precio = decimal.Parse(txteCosto.Text);
+                    c.retencion = decimal.Parse(txteRetencion.Text);
+                }
+                catch {
+                    Notification.Show("El precio y la rentencion deben ser numeros", AlertType.warm);
+                    return;
+                }
                 c.status = (textPendientePago.Checked) ? 0 : 1;
-                String validate = cc.validate(c);
+                String validate = cc.validateOnUpdate(c);
                 if (validate == "")
                 {
                     cc.update(id_cita, c);
@@ -259,9 +320,16 @@ namespace ProisProject.View.Panels
                                      MessageBoxButtons.YesNo);
                 if (confirmResult == DialogResult.Yes)
                 {
-                    cc.delete(id_cita);
-                    _clearUpdateInputs();
-                    Notification.Show("Anulación Realizada con exito", AlertType.ok);
+                   int st = cc.delete(id_cita);
+                    if (st == -1)
+                    {
+                        _clearUpdateInputs();
+                        Notification.Show("Anulación Realizada con exito", AlertType.ok);
+                    }
+                    else {
+                        Notification.Show("No puedes anular una cita que ya fué atendida", AlertType.warm);
+                        return;
+                    }
                 }
             }
             else
@@ -273,6 +341,11 @@ namespace ProisProject.View.Panels
         private void txtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             this.loadFacturas(txtSearch.Text);
+        }
+
+        private void txtTelPac_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilController.validarNumeros(e);
         }
     }
 }

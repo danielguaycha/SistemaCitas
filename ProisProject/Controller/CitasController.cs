@@ -31,16 +31,24 @@ namespace ProisProject.Controller
             return "";
         }
 
+        public string validateOnUpdate(Cita c) {
+            if (DateTime.Parse(c.fecha.Value.ToString("dd/MM/yyyy")) < DateTime.Parse(DateTime.Now.ToString("dd/MM/yyyy")))
+            {
+                return "No puedes asignar citas a fechas pasadas";
+            }
+            return "";
+        }
+
         public bool CitaByDate(Cita c) {
             return (from item in db.Cita
                     where item.fecha == c.fecha && item.id_medico == c.id_medico &&
-                    item.id_person == c.id_person && c.status == 3
+                    item.id_person == c.id_person && c.status >= 0
                     select item).Count() > 0;
         }
 
         internal void update(long id_cita, Cita c)
         {
-            Cita ct = db.Cita.Where(sp => sp.id_cita == id_cita).Single();
+            Cita ct = db.Cita.Where(sp => sp.status>=0 && sp.id_cita == id_cita).Single();
             ct.fecha = c.fecha;
             ct.retencion = c.retencion;
             ct.precio = c.precio;
@@ -49,15 +57,18 @@ namespace ProisProject.Controller
             db.SubmitChanges();
         }
 
-        internal void delete(long id_cita)
+
+
+        internal int delete(long id_cita)
         {
             Cita ct = db.Cita.Where(sp => sp.id_cita == id_cita).Single();
-            db.Cita.DeleteOnSubmit(ct);
-            db.SubmitChanges();
-        }
-
-        public void getFacturas() {
-
+            if (ct.status != 2)
+            {
+                ct.status = -1;
+                db.SubmitChanges();
+                return ct.status.Value;
+            }
+            return ct.status.Value;
         }
     }
 }

@@ -147,9 +147,9 @@ namespace ProisProject.View
                 datatableSearch.Columns.Add("Estado");
 
                 var q = from c in post.Cita
-                        where c.fecha.ToString().Contains(data) ||
+                        where c.status>=0 && (c.fecha.ToString().Contains(data) ||
                         c.Persona.dni.Contains(data) ||
-                        c.Persona.apellido.Contains(data)
+                        c.Persona.apellido.Contains(data))
                         select c;
                 q = q.OrderBy(c => c.status).Take(20);
 
@@ -167,21 +167,18 @@ namespace ProisProject.View
                         switch (p.status)
                         {
                             case 0:
-                                estado = "PENDIENTE DE ATENCIÓN & PAGO";
+                                estado = "PENDIENTE PAGO";
                                 break;
                             case 1:
-                                estado = "PENDIENTE DE ATENCIÓN - PAGADA";
+                                estado = "PAGADA";
                                 break;
                             case 2:
-                                estado = "ATENDIDA & PENDIENTE DE PAGO";
-                                break;
-                            case 3:
-                                estado = "ATENDIDA & COBRADA";
+                                estado = "ATENDIDA";
                                 break;
                         }
                         datatableSearch.Rows.Add(new Object[]
                         {
-                            p.fecha,
+                            p.fecha.Value.ToString("dd/MM/yyyy"),
                             p.Medico.Persona.nombre+" "+p.Medico.Persona.apellido,
                             p.Persona.nombre+" "+p.Persona.apellido,
                             p.Medico.Especialidad.nombre,
@@ -303,7 +300,7 @@ namespace ProisProject.View
                     CitasPanel.txteCedula.Text = listaCitas[tbSearch.CurrentRow.Index].Persona.dni;
 
                     CitasPanel.txteFecha.Text = listaCitas[tbSearch.CurrentRow.Index].fecha.ToString();
-                    CitasPanel.txteCosto.Text = valmod + "";
+                    CitasPanel.txteCosto.Text = listaCitas[tbSearch.CurrentRow.Index].precio+"";
                     CitasPanel.txteRetencion.Text = reten + "";
                     CitasPanel.textPendientePago.Checked = (listaCitas[tbSearch.CurrentRow.Index].status == 0);
                     CitasPanel.btnAnular.Show();

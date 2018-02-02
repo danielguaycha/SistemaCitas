@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PanelCitas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -440,7 +440,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCedulaPac.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCedulaPac.Location = new System.Drawing.Point(122, 36);
-            this.txtCedulaPac.MaxLength = 100;
+            this.txtCedulaPac.MaxLength = 10;
             this.txtCedulaPac.Name = "txtCedulaPac";
             this.txtCedulaPac.Size = new System.Drawing.Size(342, 24);
             this.txtCedulaPac.TabIndex = 4;
@@ -453,11 +453,12 @@
             this.txtTelPac.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelPac.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.txtTelPac.Location = new System.Drawing.Point(326, 146);
-            this.txtTelPac.MaxLength = 100;
+            this.txtTelPac.MaxLength = 10;
             this.txtTelPac.Name = "txtTelPac";
             this.txtTelPac.Size = new System.Drawing.Size(140, 24);
             this.txtTelPac.TabIndex = 8;
             this.txtTelPac.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTelPac.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelPac_KeyPress);
             // 
             // label6
             // 
@@ -558,7 +559,7 @@
             this.btnSearch.IconMarginRight = 0;
             this.btnSearch.IconRightVisible = false;
             this.btnSearch.IconRightZoom = 0D;
-            this.btnSearch.IconVisible = false;
+            this.btnSearch.IconVisible = true;
             this.btnSearch.IconZoom = 50D;
             this.btnSearch.IsTab = false;
             this.btnSearch.Location = new System.Drawing.Point(531, 30);
@@ -568,7 +569,7 @@
             this.btnSearch.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(93)))), ((int)(((byte)(123)))));
             this.btnSearch.OnHoverTextColor = System.Drawing.Color.White;
             this.btnSearch.selected = false;
-            this.btnSearch.Size = new System.Drawing.Size(71, 45);
+            this.btnSearch.Size = new System.Drawing.Size(63, 45);
             this.btnSearch.TabIndex = 24;
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearch.Textcolor = System.Drawing.Color.White;
@@ -667,7 +668,6 @@
             this.txteCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txteCosto.Location = new System.Drawing.Point(124, 72);
             this.txteCosto.Name = "txteCosto";
-            this.txteCosto.ReadOnly = true;
             this.txteCosto.Size = new System.Drawing.Size(156, 24);
             this.txteCosto.TabIndex = 10;
             this.txteCosto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1004,7 +1004,7 @@
             this.bunifuFlatButton1.IconMarginRight = 0;
             this.bunifuFlatButton1.IconRightVisible = false;
             this.bunifuFlatButton1.IconRightZoom = 0D;
-            this.bunifuFlatButton1.IconVisible = false;
+            this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 50D;
             this.bunifuFlatButton1.IsTab = false;
             this.bunifuFlatButton1.Location = new System.Drawing.Point(538, 25);
@@ -1049,8 +1049,8 @@
             // 
             this.tbFacturas.AllowUserToAddRows = false;
             this.tbFacturas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tbFacturas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tbFacturas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.tbFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -1058,14 +1058,14 @@
             this.tbFacturas.BackgroundColor = System.Drawing.SystemColors.Control;
             this.tbFacturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbFacturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tbFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(62)))), ((int)(((byte)(80)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tbFacturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.tbFacturas.ColumnHeadersHeight = 30;
             this.tbFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tbFacturas.DoubleBuffered = true;
